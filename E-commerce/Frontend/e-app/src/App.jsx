@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Nav from './components/Nav';
-import Home from './components/Home';
-import Categories from './components/Categories';
-import Winter from './components/Winter';
-import CategoriesCart from './components/CategoriesCart';
-import Footer from './components/Footer';
-import Login from './components/Login';
-import Saree from './components/section/Saree';
-import CategoryDetails from './components/CategoryDetails';
-import SareeDetails from './components/section/SareeDetails';
-import './App.css';
-
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
+import Categories from "./components/Categories";
+import Winter from "./components/Winter";
+import CategoriesCart from "./components/CategoriesCart";
+import Footer from "./components/Footer";
+import Login from "./components/Login";
+import Saree from "./components/section/Saree";
+import CategoryDetails from "./components/CategoryDetails";
+import SareeDetails from "./components/section/SareeDetails";
+import "./App.css";
 
 function App() {
   const [dark, setDark] = useState(false);
@@ -24,14 +23,20 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Mainpage dark={dark} toggle={toggle} />} />
-        
-        <Route path="/login" element={<Login dark={dark} toggle={toggle}/>} /> 
-        
-        <Route path="/saree" element={<Saree dark={dark} toggle={toggle}/>} />
 
-        <Route path="/category/:categoryId" element={<CategoryDetails dark={dark} toggle={toggle}/>} />
-        
-        <Route path="/saree/:sareeId" element={<SareeDetails dark={dark} toggle={toggle} />} />
+        <Route path="/login" element={<Login dark={dark} toggle={toggle} />} />
+
+        <Route path="/saree" element={<Saree dark={dark} toggle={toggle} />} />
+
+        <Route
+          path="/category/:categoryId"
+          element={<CategoryDetails dark={dark} toggle={toggle} />}
+        />
+
+        <Route
+          path="/saree/:sareeId"
+          element={<SareeDetails dark={dark} toggle={toggle} />}
+        />
       </Routes>
     </Router>
   );
@@ -39,21 +44,20 @@ function App() {
 
 function Mainpage({ dark, toggle }) {
   return (
-    <div className={`${dark ? 'bg-black text-white' : 'bg-white text-black'} transition-all duration-1000 ease-in-out`}>
-      <Nav dark={dark} toggle={toggle} showprofile={true} showcontent={true}/>
-      
+    <div
+      className={`${
+        dark ? "bg-black text-white" : "bg-white text-black"
+      } transition-all duration-1000 ease-in-out`}
+    >
+      <Nav dark={dark} toggle={toggle} showprofile={true} showcontent={true} />
+
       <Home />
       <Categories />
       <Winter />
       <CategoriesCart />
       <Footer />
-     
-      
-    
     </div>
   );
 }
 
-
 export default App;
-

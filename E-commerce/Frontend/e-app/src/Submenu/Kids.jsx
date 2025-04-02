@@ -56,7 +56,7 @@ function Kids() {
         <div className="flex flex-col list-none ">
           <p className="text-[#e67e22] font-[sk] ">Kids Accessories</p>
           <div className="text-[14px] flex flex-col gap-1 mt-4">
-            {Kids_Accessories .map((item, index) => (
+            {Kids_Accessories.map((item, index) => (
               <li
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "

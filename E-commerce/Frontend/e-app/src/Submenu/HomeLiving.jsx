@@ -5,9 +5,9 @@ import {
   Bath,
   LampsLighting,
   HomeDécor,
-  KitchenTable ,
+  KitchenTable,
   Storage,
-  HBrands 
+  HBrands,
 } from "../Data/Data";
 
 function HomeLiving() {

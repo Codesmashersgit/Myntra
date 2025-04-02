@@ -23,7 +23,6 @@ function Men() {
                 className="cursor-pointer hover:opacity-100 opacity-70"
               >
                 <a href={item.url}>{item.title}</a>
-               
               </li>
             ))}
           </div>

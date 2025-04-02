@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Importing Link from react-router-dom
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Categories() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // Fetching data from the backend
-    fetch('http://localhost:8000/api/category/category')
+    fetch("http://localhost:8000/api/category/category")
       .then((res) => res.json())
-      .then((data) => setCategories(data))  // Set the fetched images into state
-      .catch((err) => console.log('Error fetching categories:', err)); // Handle error
-  }, []);  // Empty dependency array means this runs once when the component mounts
-
+      .then((data) => setCategories(data))
+      .catch((err) => console.log("Error fetching categories:", err));
+  }, []);
   return (
     <div>
       {/* Banner Image */}
@@ -25,16 +23,13 @@ function Categories() {
       <div className="flex flex-wrap mt-5 justify-center items-center gap-2">
         {categories.map((category, index) => (
           <Link key={index} to={`/category/${index}`}>
-            
             <img
               loading="lazy"
               src={category}
               alt={`Category ${index + 1}`}
               className="md:h-[300px] h-[200px] object-contain cursor-pointer"
             />
-          
           </Link>
-          
         ))}
       </div>
     </div>
@@ -42,4 +37,3 @@ function Categories() {
 }
 
 export default Categories;
-

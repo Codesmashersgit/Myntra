@@ -10,13 +10,12 @@ import { Link } from "react-router-dom";
 import { FaChevronUp } from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
 import { FaChevronDown } from "react-icons/fa";
-import Men from '../Submenu/Men';
-import Women from '../Submenu/Women';
+import Men from "../Submenu/Men";
+import Women from "../Submenu/Women";
 import Kids from "../Submenu/Kids";
 import HomeLiving from "../Submenu/HomeLiving";
 import Beauty from "../Submenu/Beauty";
 import { Topwear } from "../Data/Data";
-
 
 function Nav({ dark, toggle, showprofile, showcontent }) {
   const { state } = useGlobalState();
@@ -82,8 +81,8 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                     className={`h-[500px] w-[1000px] hidden px-10 py-4 group-hover:block flex-wrap ${
                       dark ? "bg-black text-white" : "bg-white text-black"
                     }`}
-                  > 
-                    <Men/>
+                  >
+                    <Men />
                   </div>
                 </div>
               )}
@@ -101,7 +100,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                       dark ? "bg-black text-white" : "bg-white text-black"
                     }`}
                   >
-                    <Women/>
+                    <Women />
                   </div>
                 </div>
               )}
@@ -119,7 +118,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                       dark ? "bg-black text-white " : "bg-white text-black"
                     }`}
                   >
-                    <Kids/>
+                    <Kids />
                   </div>
                 </div>
               )}
@@ -137,8 +136,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                       dark ? "bg-black text-white" : "bg-white text-black"
                     }`}
                   >
-                    
-                    <HomeLiving/>
+                    <HomeLiving />
                   </div>
                 </div>
               )}
@@ -156,8 +154,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                       dark ? "bg-black text-white" : "bg-white text-black"
                     }`}
                   >
-                 
-                     <Beauty/>
+                    <Beauty />
                   </div>
                 </div>
               )}
@@ -383,7 +380,6 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                     <a href="">Fashion Accessories</a>
                     <a href="">Bags & Backpacks</a>
                     <a href="">Luggage & Trolleys</a>
-
                   </div>
                 )}
 

@@ -8,9 +8,6 @@ import {
   Fragrances,
   MenGrooming,
   BeautyGiftMakeupSet,
-  
-  
-  
 } from "../Data/Data";
 
 function Beauty() {
