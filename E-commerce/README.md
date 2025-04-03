@@ -43,13 +43,13 @@ Make sure you have the following installed on your local machine:
 
 
 ```bash
-  git clone https://github.com/Codesmashersgit/myntra-clone.git
+  git clone https://github.com/Codesmashersgit/myntra.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd myntra-clone
+  cd E-commerce
 ```
 
 ## Install dependencies
