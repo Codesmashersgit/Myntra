@@ -22,6 +22,7 @@ router.get("/category", (req, res) => {
   res.json(category);
 });
 
+// 
 const categoryItems = [
   // Category 0 items
   {
@@ -30,18 +31,29 @@ const categoryItems = [
       {
         imageUrl:
           "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/21568972/2023/1/16/5cdd2513-db15-40ba-ad94-0661d2043db61673872297871GraffitiTealGreenOversizedT-Shirt1.jpg",
-        description: "Graffiti Teal Green Oversized T-Shirt",
+        description: "Graffiti Oversized T-Shirt",
         price: "Rs.25.99",
         rating: 4.5,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Brand A",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Teal Green"],
+        videoUrl:'https://videos.pexels.com/video-files/7475682/7475682-sd_640_360_25fps.mp4'
       },
       {
         imageUrl:
           "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/24265106/2023/7/29/4c4dffb5-8683-42d6-b3f3-9cd6e069421c1690653424655AbstractLeopardBlueT-Shirt1.jpg",
-        description: "Abstract Leopard Blue T-Shirt",
+        description: "Leopard Blue T-Shirt",
         price: "Rs.22.99",
         rating: 4.2,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Brand B",
+        material: "Cotton",
+        size: ["S", "M", "L"],
+        color: ["Blue", "Leopard Print"],
       },
       {
         imageUrl:
@@ -50,6 +62,11 @@ const categoryItems = [
         price: "Rs.19.99",
         rating: 4.7,
         discountedPrice: "Rs.499",
+        availability: "Out of Stock",
+        brand: "Snitch",
+        material: "Polyester",
+        size: ["M", "L", "XL"],
+        color: ["Black", "White"],
       },
       {
         imageUrl:
@@ -58,14 +75,24 @@ const categoryItems = [
         price: "Rs.27.49",
         rating: 4.6,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Snitch",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Navy Blue", "White"],
       },
       {
         imageUrl:
           "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/29421872/2024/5/8/54e86b97-25f0-4cad-bfdf-0c162a8fd7451715163628458SnitchMenPoloCollarSlimFitT-shirt1.jpg",
-        description: "Snitch Men Slim Fit T-Shirt",
+        description: "Snitch Men Slim T-Shirt",
         price: "Rs.28.99",
         rating: 4.3,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Snitch",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Black", "White"],
       },
       {
         imageUrl:
@@ -74,6 +101,11 @@ const categoryItems = [
         price: "Rs.24.99",
         rating: 4.4,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Snitch",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Mustard Yellow"],
       },
       {
         imageUrl:
@@ -82,14 +114,24 @@ const categoryItems = [
         price: "Rs.20.99",
         rating: 4.1,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Snitch",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Black"],
       },
       {
         imageUrl:
           "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/24092890/2024/1/2/5dd51418-3e6c-4915-b5f3-755b5ca9d2671704189614004-Snitch-Men-Black-Typography-Printed-Pockets-T-shirt-14517041-2.jpg",
-        description: "Snitch Men Printed Pockets T-Shirt",
+        description: "Snitch Men Pockets T-Shirt",
         price: "Rs.26.99",
         rating: 4.8,
         discountedPrice: "Rs.499",
+        availability: "Out of Stock",
+        brand: "Snitch",
+        material: "Cotton",
+        size: ["S", "M", "L"],
+        color: ["Black"],
       },
       {
         imageUrl:
@@ -98,14 +140,26 @@ const categoryItems = [
         price: "Rs.29.99",
         rating: 4.0,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Snitch",
+        material: "Cotton",
+        size: ["S", "M", "L"],
+        color: ["Cream"],
+         videoUrl:''
       },
-      {
+      { 
         imageUrl:
           "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2024/AUGUST/10/38Ro3f6v_76fedf94f7f94f828081e90a63732b5e.jpg",
         description: "Snitch Men Slim Fit T-Shirt",
         price: "Rs.21.99",
         rating: 4.5,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Snitch",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["White", "Black"],
+        videoUrl:''
       },
       {
         imageUrl:
@@ -114,6 +168,12 @@ const categoryItems = [
         price: "Rs.23.99",
         rating: 4.6,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "Snitch",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Blue", "Navy Blue"],
+        videoUrl:'https://videos.pexels.com/video-files/9558958/9558958-sd_960_506_25fps.mp4'
       },
     ],
   },
@@ -128,6 +188,11 @@ const categoryItems = [
         price: "Rs.35.99",
         rating: 4.3,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "HIGHLANDER",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Olive Green", "Black"],
       },
       {
         imageUrl:
@@ -136,6 +201,11 @@ const categoryItems = [
         price: "Rs.32.99",
         rating: 4.1,
         discountedPrice: "Rs.499",
+        availability: "Out of Stock",
+        brand: "HIGHLANDER",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Navy Blue", "Maroon"],
       },
       {
         imageUrl:
@@ -144,6 +214,11 @@ const categoryItems = [
         price: "Rs.30.99",
         rating: 4.2,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "HIGHLANDER",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["White", "Blue"],
       },
       {
         imageUrl:
@@ -152,6 +227,11 @@ const categoryItems = [
         price: "Rs.34.99",
         rating: 4.4,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "HIGHLANDER",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Black", "Olive Green"],
       },
       {
         imageUrl:
@@ -160,6 +240,11 @@ const categoryItems = [
         price: "Rs.31.99",
         rating: 4.5,
         discountedPrice: "Rs.499",
+        availability: "Out of Stock",
+        brand: "HIGHLANDER",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["White", "Blue"],
       },
       {
         imageUrl:
@@ -168,6 +253,11 @@ const categoryItems = [
         price: "Rs.29.99",
         rating: 4.3,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "HIGHLANDER",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Blue", "Black"],
       },
       {
         imageUrl:
@@ -176,6 +266,11 @@ const categoryItems = [
         price: "Rs.33.49",
         rating: 4.2,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "HIGHLANDER",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["Pink", "White"],
       },
       {
         imageUrl:
@@ -184,10 +279,16 @@ const categoryItems = [
         price: "Rs.27.99",
         rating: 4.6,
         discountedPrice: "Rs.499",
+        availability: "In Stock",
+        brand: "HIGHLANDER",
+        material: "Cotton",
+        size: ["M", "L", "XL"],
+        color: ["White"],
       },
     ],
   },
 ];
+
 
 router.get("/category/:categoryId", (req, res) => {
   const { categoryId } = req.params; // Fetch categoryId from request params

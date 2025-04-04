@@ -8,7 +8,7 @@ import CategoriesCart from "./components/CategoriesCart";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Saree from "./components/section/Saree";
-import CategoryDetails from "./components/CategoryDetails";
+import CategoryDetails from "./components/section/CategoryDetails";
 import SareeDetails from "./components/section/SareeDetails";
 import "./App.css";
 
