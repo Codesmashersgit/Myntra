@@ -94,12 +94,13 @@ function Saree({ dark, toggle }) {
             <p className='text-sm pl-1'>{item.description}</p>
           </div>
         ))}
-      </div>
-
-      <div>
+         <div>
         <p className={`m-7 ${dark ? 'border border-slate-50 opacity-10' : 'border border-b-[1px]'} transition-all duration-1000 ease-in-out`}></p>
         <Footer />
       </div>
+      </div>
+
+     
     </>
   );
 }
