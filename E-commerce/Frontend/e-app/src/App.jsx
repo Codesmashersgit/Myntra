@@ -44,10 +44,9 @@ function App() {
           path="/categorycart/:categorycartId"
           element={<CategoryCartDetails dark={dark} toggle={toggle} />}
         />
-         <Route
-          path="/winter/:winterId"
-          element={<WinterDetails dark={dark} toggle={toggle} />}
-        />
+         
+          <Route path="/winter/:winterId" element={<WinterDetails dark={dark} toggle={toggle} />} />
+       
       </Routes>
     </Router>
   );
