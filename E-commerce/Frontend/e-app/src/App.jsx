@@ -10,6 +10,8 @@ import Login from "./components/Login";
 import Saree from "./components/section/Saree";
 import CategoryDetails from "./components/section/CategoryDetails";
 import SareeDetails from "./components/section/SareeDetails";
+import CategoryCartDetails from "./components/section/CategoryCartDetails";
+import WinterDetails from "./components/section/WinterDetails";
 import "./App.css";
 
 function App() {
@@ -37,6 +39,15 @@ function App() {
           path="/saree/:sareeId"
           element={<SareeDetails dark={dark} toggle={toggle} />}
         />
+
+        <Route
+          path="/categorycart/:categorycartId"
+          element={<CategoryCartDetails dark={dark} toggle={toggle} />}
+        />
+         <Route
+          path="/winter/:winterId"
+          element={<WinterDetails dark={dark} toggle={toggle} />}
+        />
       </Routes>
     </Router>
   );
@@ -55,6 +66,7 @@ function Mainpage({ dark, toggle }) {
       <Categories />
       <Winter />
       <CategoriesCart />
+      
       <Footer />
     </div>
   );

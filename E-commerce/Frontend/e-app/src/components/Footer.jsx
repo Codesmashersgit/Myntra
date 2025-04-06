@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 function Footer() {
   return (
     <div
@@ -12,7 +13,7 @@ function Footer() {
           <Link to="/Men">
             <li className="cursor-pointer ">Men</li>
           </Link>
-          <li className="cursor-pointer ">Women</li>
+         <Link to='/Saree'><li className="cursor-pointer ">Women</li></Link>
           <li className="cursor-pointer ">Kids</li>
           <li className="cursor-pointer ">Home & Living</li>
           <li className="cursor-pointer ">Beauty</li>

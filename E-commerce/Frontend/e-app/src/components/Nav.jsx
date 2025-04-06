@@ -328,7 +328,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               }`}
               style={{ right: open ? "0%" : "-100%" }}
             >
-              <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/10/30/b7eb4f88-4a93-4b68-beac-982d29be81671698648116564-Flat_500--1-.jpg " />
+           <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/2023/10/30/b7eb4f88-4a93-4b68-beac-982d29be81671698648116564-Flat_500--1-.jpg " />
               <Link to="/Login">
                 <button className=" mt-4 text-red-400 p-2 font-[sk]">
                   Login/Signup

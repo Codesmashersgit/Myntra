@@ -170,17 +170,6 @@ router.get("/saree", (req, res) => {
 
   res.json(sareeimg);
 
-  // router.get("/saree/:sareeId", (req, res) => {
-  //   const { sareeId } = req.params; // Fetch sareeId from request params
-
-  //   const saree = sareeimg.find((item) => item.id === sareeId); // Find saree by ID
-
-  //   if (saree) {
-  //     res.json(saree); // Send the specific saree details
-  //   } else {
-  //     res.status(404).json({ error: "Saree not found" }); // Return 404 if saree not found
-  //   }
-  // });
   router.get("/saree/:sareeId", (req, res) => {
     const { sareeId } = req.params; // Fetch categoryId from request params
     const sareeIdInt = parseInt(sareeId); // Convert string ID to integer
