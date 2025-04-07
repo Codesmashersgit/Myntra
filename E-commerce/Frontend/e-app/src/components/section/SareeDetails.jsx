@@ -1,127 +1,94 @@
-// import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { useGlobalState } from '../../context/GlobalState';
-// import Nav from '../Nav';
-// import Footer from '../Footer';
 
-
-// function SareeDetails({ dark, toggle }) {
-//   const { state } = useGlobalState();
-//   const { sareeId } = useParams(); // Get the saree ID from the URL
-//   const [sareeimg, setSareeimg] = useState([]);
-
-//   useEffect(() => {
-//       // Fetch the saree details from the server if not in the global state
-//       fetch(`http://localhost:8000/api/women/saree${sareeId}`)
-//         .then(res => res.json())
-//         .then(data => setSareeimg(data))
-//         .catch(err => console.error('Error fetching saree details:', err));
-//   }, [sareeId]);
-
-//   // if (!saree) {
-//   //   return <div className="text-center mt-20">Loading...</div>;
-//   // }
-
-//   const handleBuyNow = () => {
-//     alert('Redirecting to payment gateway...');
-//     // Implement payment gateway logic here
-//   };
-
-//   return (
-//     <>
-//       <Nav
-//         showprofile={false}
-//         showsearch={false}
-//         showcontent={true}
-//         dark={dark}
-//         toggle={toggle}
-//       />
-//       <div className={`flex flex-col items-center lg:pt-28 pt-32 ${dark ? 'bg-black text-white' : 'bg-white text-black'} transition-all duration-1000 ease-in-out`}>
-//         <div className="flex flex-col lg:flex-row gap-10 p-5">
-//           {/* Image Section */}
-//           {/* 
-//            */}
-//            {sareeimg.map((url, index) => (
-//           <Link key={index} to={`/url/${index}`}>
-//             <img
-//               loading="lazy"
-//               src={url}
-//               className="md:h-[300px] h-[200px] object-contain cursor-pointer"
-//             />
-//           </Link>
-//         ))}
-
-//           {/* Details Section */}
-//           <div className="flex-1 flex flex-col gap-5">
-//             {/* <h1 className="text-2xl font-bold">{saree.}</h1> */}
-//             {/* <p className="text-lg text-red-500 font-semibold">
-//               ₹{saree.discountedPrice}
-//             </p>
-//             <p className="text-sm text-gray-500 line-through">
-//               ₹{saree.price}
-//             </p>
-//             <p className="text-base">{saree.description}</p> */}
-//             <button
-//               onClick={handleBuyNow}
-//               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-all"
-//             >
-//               Buy Now
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//       <Footer />
-//     </>
-//   );
-// }
-
-// export default SareeDetails;
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Nav from '../Nav';
 import Footer from '../Footer';
+import Saree from './Saree';
 
 function SareeDetails({ dark, toggle }) {
-  const { sareeId } = useParams(); // Get the saree ID from the URL
+  const { sareeId } = useParams(); 
   const [saree, setSaree] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch the saree details based on sareeId
     fetch(`http://localhost:8000/api/women/saree/${sareeId}`)
       .then(res => res.json())
-      .then(data => setSaree(data))
-      .catch(err => console.error('Error fetching saree details:', err));
+      .then(data => {
+        setSaree(data);
+        setLoading(false);
+      })
+      .catch(err => console.log(err));
   }, [sareeId]);
 
-  // if (!saree) {
-  //   return <div className="text-center mt-20">Loading...</div>;
-  // }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  const addToCart = (item) => {
+    dispatch({ type: "ADD_TO_CART", payload: item });
+    setShowCartNotification(true);
+    setTimeout(() => setShowCartNotification(false), 3000);
+  };
+
+  const AddToWishlist = (item) => {
+    dispatch({ type: "ADD_TO_WISHLIST", payload: item });
+    setShowWishlistNotification(true);
+    setTimeout(() => setShowWishlistNotification(false), 3000);
+  };
 
   return (
     <>
       <Nav showprofile={false} showsearch={false} showcontent={true} dark={dark} toggle={toggle} />
-      <div className={`flex flex-col items-center lg:pt-28 pt-32 ${dark ? 'bg-black text-white' : 'bg-white text-black'} transition-all duration-1000 ease-in-out`}>
-        <div className="flex flex-col lg:flex-row gap-10 p-5">
-          {/* Image Section */}
-          <div className="flex flex-col gap-5">
-            <img
-              loading="lazy"
-              src={saree.imageurl}
-              alt={saree.name}
-              className="md:h-[400px] h-[300px] object-contain"
-            />
+      <div className={`flex flex-col items-center lg:pt-28 pt-32 ${dark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+        <div className="flex lg:flex-row gap-10">
+          <div className="flex gap-5 flex-wrap w-[63%] pl-5">
+          {saree.imageurl.map((imageUrl, index) => (
+          <img
+            key={index}
+            src={imageUrl}
+            alt={`Saree Image ${index + 1}`}
+            className="w-[450px]"
+          />
+        ))}
           </div>
-
-          {/* Details Section */}
           <div className="flex-1 flex flex-col gap-5">
-            <h1 className="text-2xl font-bold">{saree.name}</h1>
-            <p className="text-lg text-red-500 font-semibold">₹{saree.discountedPrice}</p>
+            <h1 className="text-2xl font-[sk]">{saree.name}</h1>
+            <p className="text-lg text-red-500 font-[sk]">₹{saree.discountedPrice}</p>
             <p className="text-sm text-gray-500 line-through">₹{saree.price}</p>
-            <p className="text-base">{saree.description}</p>
+            <p className="text-base font-[sk]">{saree.description}</p>
+            <div className="mt-5">
+  <label className="text-lg font-semibold">Select Size:</label>
+  <select className="w-full p-2 border border-gray-300 rounded-md mt-2">
+    <option value="s">Small</option>
+    <option value="m">Medium</option>
+    <option value="l">Large</option>
+    <option value="xl">X-Large</option>
+  </select>
+</div>
+
+<div className="mt-5">
+  <label className="text-lg font-semibold">Select Color:</label>
+  <div className="flex gap-4 mt-2">
+    <label>
+      <input type="radio" name="color" value="red" />
+      <span className="ml-2">Red</span>
+    </label>
+    <label>
+      <input type="radio" name="color" value="blue" />
+      <span className="ml-2">Blue</span>
+    </label>
+    <label>
+      <input type="radio" name="color" value="green" />
+      <span className="ml-2">Green</span>
+    </label>
+  </div>
+  
+</div>
+
           </div>
+          
         </div>
       </div>
-      <Footer />
+      <Saree/>
     </>
   );
 }

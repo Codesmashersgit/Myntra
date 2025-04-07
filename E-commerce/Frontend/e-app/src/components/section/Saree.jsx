@@ -67,10 +67,10 @@ function Saree({ dark, toggle }) {
                 {item.rating}
                 <p className='text-green-700'>★</p>
               </div>
-              <Link key={index} to={`/saree/${index}`}>
+              <Link to={`/saree/${index}`}>
             <img
                 loading='lazy'
-                src={item.imageurl}
+                src={item.imageurl[0]}
                 alt={item.name}
                 className='md:h-[300px] h-[200px] object-contain cursor-pointer'
               />
