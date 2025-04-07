@@ -117,53 +117,11 @@ router.get("/saree", (req, res) => {
     },
     {
       imageurl:
-        "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2024/SEPTEMBER/3/Tl1ysT14_f1e5df489d8144bebe643c880d3c6cfc.jpg",
-      name: "Kasee",
-      price: "Rs. 999",
-      rating: "4.5",
-      description: "Beads and Stones Saree",
-      discountedPrice: "Rs. 499",
-    },
-    {
-      imageurl:
-        "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2024/OCTOBER/19/k0uxEMoD_73e5be7b10c6445f97ea6cf4a329a2ef.jpg",
-      name: "Kasee",
-      price: "Rs. 999",
-      rating: "4.5",
-      description: "Beads and Stones Saree",
-      discountedPrice: "Rs. 499",
-    },
-    {
-      imageurl:
-        "https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/22761590/2023/4/13/29dad21d-8f01-4bbd-9945-fb28a80418b51681404510410LavenderSilverStoneworkCrepeSaree1.jpg",
-      name: "Kasee",
-      price: "Rs. 999",
-      rating: "4.5",
-      description: "Beads and Stones Saree",
-      discountedPrice: "Rs. 499",
-    },
-    {
-      imageurl:
-        "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2024/NOVEMBER/29/vhM4fSZn_28f05f20ea5a403393b7e200ddf0bf38.jpg",
-      name: "Kasee",
-      price: "Rs. 999",
-      rating: "4.5",
-      description: "Beads and Stones Saree",
-      discountedPrice: "Rs. 499",
-    },
-    {
-      imageurl:
-        "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/30911483/2025/1/29/0b4c0b2d-e6dc-48a5-a6b9-03b27c6737e11738151882085-House-of-Pataudi-Embroidered-Saree-With-Blouse-Piece-7681738-1.jpg",
-      name: "Kasee",
-      price: "Rs. 999",
-      rating: "4.5",
-      description: "Beads and Stones Saree",
-      discountedPrice: "Rs. 499",
-    },
-    {
-      imageurl:
       [
-        "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/26562828/2023/12/21/0b4061b5-260f-4964-8535-3236df4273fb1703129709551WovenPurpleDesignerCottonSilkSaree1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30140472/2024/7/6/4e9c5171-b430-4e0d-8a5a-fdbb58ad20d01720253931551SabaahatEmbellishedEmbroideredPureGeorgetteSaree1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30140472/2024/7/6/e71cf066-a40b-4962-bd87-7f502742044f1720253931533SabaahatEmbellishedEmbroideredPureGeorgetteSaree2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30140472/2024/7/6/42cda94a-ff7d-4745-8819-665775529ac51720253931542SabaahatEmbellishedEmbroideredPureGeorgetteSaree3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30140472/2024/7/6/44e0fcae-6481-45ee-ba84-a1bda932b15d1720253931569SabaahatEmbellishedEmbroideredPureGeorgetteSaree4.jpg",
       ],
       name: "Kasee",
       price: "Rs. 999",
@@ -173,7 +131,12 @@ router.get("/saree", (req, res) => {
     },
     {
       imageurl:
-        "https://assets.myntassets.com/f_webp,dpr_1.5,q_60,w_210,c_limit,fl_progressive/assets/images/2024/SEPTEMBER/23/AidsF7op_85caeef93a98463a886bbf0a3474e8de.jpg",
+        [
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30237261/2024/7/18/c75b9845-ab81-4db1-90f4-e5cfba9cae331721306248982TikhiImliStripedSatinSaree1.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30237261/2024/7/18/8e915f8a-128f-4e38-96f0-0b7dbb62d16c1721306249007TikhiImliStripedSatinSaree2.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30237261/2024/7/18/fd3de884-62d5-4ad2-9563-c180f455a7311721306249084TikhiImliStripedSatinSaree4.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30237261/2024/7/18/8131b538-6cb6-419f-8a6e-6fe7d81bece31721306249137TikhiImliStripedSatinSaree3.jpg",
+        ],
       name: "Kasee",
       price: "Rs. 999",
       rating: "4.5",
@@ -182,7 +145,12 @@ router.get("/saree", (req, res) => {
     },
     {
       imageurl:
-        "https://assets.myntassets.com/f_webp,h_560,q_90,w_420/v1/assets/images/2024/DECEMBER/10/lv1OZZ9E_9be2700dc82c42359e1443a0fc384295.jpg",
+        [
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/28931300/2024/4/14/ecbc0b05-a2ef-4ddb-9427-172c2cbd81781713040248222SatraniWomensDyedJacquardSilkBlendHotPinkSaree1.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/28931300/2024/4/14/204bdad7-eee9-4cda-9cef-a4fe7cde282a1713040248204SatraniWomensDyedJacquardSilkBlendHotPinkSaree2.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/28931300/2024/4/14/f5c2a902-bced-456a-ad1b-31ba093edda21713040248186SatraniWomensDyedJacquardSilkBlendHotPinkSaree4.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/28931300/2024/4/14/34473893-0fb7-46c4-b45d-804acf687b051713040248213SatraniWomensDyedJacquardSilkBlendHotPinkSaree3.jpg",
+        ],
       name: "Kasee",
       price: "Rs. 999",
       rating: "4.5",
@@ -191,7 +159,12 @@ router.get("/saree", (req, res) => {
     },
     {
       imageurl:
-        "https://www.vinusto.in/cdn/shop/files/15th_may_202458171_b73ed3b7-9b72-4b58-8325-79cab1804c44.jpg?v=1717414745",
+        [
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/29087060/2024/4/20/1d08adbf-8ee5-4ea9-ad9e-2ab840a967001713603647050Readytowearyellowcoloredlycrasareewithfoilembellishmentsandf1.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/29087060/2024/4/20/b29f78b0-f6e0-447c-a848-2481628ca4c81713603647013Readytowearyellowcoloredlycrasareewithfoilembellishmentsandf2.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/29087060/2024/4/20/b29871de-93a7-4efc-8418-a26b08b05d891713603646959Readytowearyellowcoloredlycrasareewithfoilembellishmentsandf3.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/29087060/2024/4/20/0f7b50b7-0743-40eb-bb2c-212d705b621a1713603647031Readytowearyellowcoloredlycrasareewithfoilembellishmentsandf5.jpg",
+        ],
       name: "Kasee",
       price: "Rs. 999",
       rating: "4.5",
@@ -200,7 +173,85 @@ router.get("/saree", (req, res) => {
     },
     {
       imageurl:
-        "https://www.vinusto.in/cdn/shop/products/ashwinvinusto0136_bf5c5055-a60e-48f4-b87e-f326ac659ab6.jpg?v=1643887889",
+        [
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/2024/AUGUST/29/fZKCVNST_b2e4eca1cd5f4e7ba1b0888a02dcc3f0.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/2024/AUGUST/29/j7foTAL0_1bf5fb6b1b5348369b7e3e3b635a508a.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/2024/AUGUST/29/77tWlAST_f19909f3bcae4f59ae8b258d73ecb7b5.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/2024/AUGUST/29/WceB7fpt_f1eae9c589bb420f9b969055c8a868d3.jpg",
+          
+        ],
+      name: "Kasee",
+      price: "Rs. 999",
+      rating: "4.5",
+      description: "Beads and Stones Saree",
+      discountedPrice: "Rs. 499",
+    },
+    {
+      imageurl:
+      [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30146110/2024/7/8/8a3f5709-99b5-42ad-a676-6676603344f31720421011752SatraniEthnicMotifsZariSilkBlendBanarasiSaree2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30146110/2024/7/8/5bf9a330-84c8-4525-9260-3e9c9a6f2c071720421011866SatraniEthnicMotifsZariSilkBlendBanarasiSaree1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30146110/2024/7/8/d6b16d1f-916d-4629-9d2e-b493822de3171720421011826SatraniEthnicMotifsZariSilkBlendBanarasiSaree3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/30146110/2024/7/8/8bea06c3-6382-49b8-af95-b58d19b3a6ae1720421011945SatraniEthnicMotifsZariSilkBlendBanarasiSaree4.jpg",
+
+      ],
+      name: "Kasee",
+      price: "Rs. 999",
+      rating: "4.5",
+      description: "Beads and Stones Saree",
+      discountedPrice: "Rs. 499",
+    },
+    {
+      imageurl:
+        [
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27290072/2024/2/2/66adaf1a-6fb8-49fc-8fb8-2fabbafe91661706852557072kaseeWomenSarees1.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27290072/2024/2/2/76056927-4faa-4d31-88b9-303c8f84d37f1706852557060kaseeWomenSarees2.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27290072/2024/2/2/b4ffc862-1538-40c8-8e6a-16216f6ae9b91706852557088kaseeWomenSarees3.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/27290072/2024/2/2/a4383833-e41a-47f0-83f4-38caa44a17011706852557077kaseeWomenSarees4.jpg",
+        ],
+      name: "Kasee",
+      price: "Rs. 999",
+      rating: "4.5",
+      description: "Beads and Stones Saree",
+      discountedPrice: "Rs. 499",
+    },
+    {
+      imageurl:
+       [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/26138530/2023/11/30/60e19d99-a99d-4556-9ba4-30ac3fa68eae1701328211502AnoukMaroonMaroonLeheriyaOrganzaDesignerSaree1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/26138530/2023/11/30/7a9e5eb2-1ed7-41bf-8b01-14fae5b122c41701328211489AnoukMaroonMaroonLeheriyaOrganzaDesignerSaree2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/26138530/2023/11/30/8a619b05-0dd8-416d-b413-d0db3a6f2af21701328211483AnoukMaroonMaroonLeheriyaOrganzaDesignerSaree4.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/26138530/2023/11/30/23fabb49-b855-4fb3-9472-7a07263608b01701328211477AnoukMaroonMaroonLeheriyaOrganzaDesignerSaree3.jpg",
+       ],
+      name: "Kasee",
+      price: "Rs. 999",
+      rating: "4.5",
+      description: "Beads and Stones Saree",
+      discountedPrice: "Rs. 499",
+    },
+    {
+      imageurl:
+      [
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19475538/2022/8/12/f176f19a-f061-48e6-8ed2-f738fb3654ce1660312685153KoskiiMauveEmbroideredSaree1.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19475538/2022/8/12/2bfb3bf2-794e-4cba-ba40-e345ca667c3f1660312685132KoskiiMauveEmbroideredSaree3.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19475538/2022/8/12/7a3e5f38-d8db-4c15-8cb6-22a91cd784f01660312685112KoskiiMauveEmbroideredSaree2.jpg",
+        "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/19475538/2022/8/12/d5485da6-7882-4415-93e1-343bde3d663a1660312685142KoskiiMauveEmbroideredSaree4.jpg",
+      ],
+        
+      name: "Kasee",
+      price: "Rs. 999",
+      rating: "4.5",
+      description: "Beads and Stones Saree",
+      discountedPrice: "Rs. 499",
+    },
+    {
+      imageurl:
+        [
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/21569212/2023/1/16/daf64bf9-c674-4ef6-8c0d-1ca4d79e3aff1673878786412Creamcoloredpolyestersareewithhandprintandscallopedborder1.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/21569212/2023/1/16/d0514124-2de5-4f49-b52e-d19b04b4b6eb1673878786393Creamcoloredpolyestersareewithhandprintandscallopedborder2.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/21569212/2023/1/16/5ff651c5-d44b-4c42-9fde-d05690559aff1673878786403Creamcoloredpolyestersareewithhandprintandscallopedborder4.jpg",
+          "https://assets.myntassets.com/h_720,q_90,w_540/v1/assets/images/21569212/2023/1/16/012d4310-9e66-4cac-9aac-c009887ea3f91673878786421Creamcoloredpolyestersareewithhandprintandscallopedborder3.jpg",
+        ],
       name: "Kasee",
       price: "Rs. 999",
       rating: "4.5",
