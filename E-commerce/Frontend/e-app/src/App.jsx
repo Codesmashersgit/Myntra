@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Mainpage dark={dark} toggle={toggle} />} />
 
-        <Route path="/login" element={<Login dark={dark} toggle={toggle} />} />
+       <Route path="/login" element={<Login dark={dark} toggle={toggle} />} />
 
         <Route path="/saree" element={<Saree dark={dark} toggle={toggle} />} />
 
@@ -45,7 +45,7 @@ function App() {
           element={<CategoryCartDetails dark={dark} toggle={toggle} />}
         />
          
-          <Route path="/winter/:winterId" element={<WinterDetails dark={dark} toggle={toggle} />} />
+          <Route path="/winter/:winterId/:itemId" element={<WinterDetails dark={dark} toggle={toggle} />} />
        
       </Routes>
     </Router>

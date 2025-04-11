@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/winter", (req, res) => {
-  const winter = [
+  const getWinterImages = (req, res) =>{
+
+   const winter = [
     "https://assets.myntassets.com/f_webp,w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2024/OCTOBER/18/HxskTQy0_59508c4300b54b5d9d88359725b5d1cf.png",
     "https://assets.myntassets.com/f_webp,w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2024/OCTOBER/18/siJHb5cn_c057fa3942814af6a69518ba08c6e1c9.png",
-    
     "https://assets.myntassets.com/f_webp,w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2024/OCTOBER/18/qz6lYblh_66f6c4b262344edd918c0284b15484fb.png",
     "https://assets.myntassets.com/f_webp,w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2024/OCTOBER/18/idfQiUc0_02a70c66d82040d9b9d0c6bad491ea70.png",
     "https://assets.myntassets.com/f_webp,w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2024/OCTOBER/18/Nu2e2Kt8_ffd035a2f446479a9ffde6db35bb4906.png",
@@ -18,7 +18,10 @@ router.get("/winter", (req, res) => {
     "https://assets.myntassets.com/f_webp,w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2024/OCTOBER/18/ojiPnxmT_e1c69e4c593e4e049889dc3a462c8233.png",
   ];
   res.json(winter);
-});
+  }
+
+  const getWinterItemById = (req, res) => {
+    const { winterId, itemId } = req.params;
 const winterItems = [
   // Category 0 items
   {
@@ -130,15 +133,20 @@ const winterItems = [
 ];
 
 
-router.get("/winter/:winterId", (req, res) => {
-  const { winterId } = req.params; 
-  const winterIdInt = parseInt(winterId); // Convert to integer
 
-  if (winterIdInt >= 0 && winterIdInt < winterItems.length) {
-    res.json(winterItems[winterIdInt].items); // Return items of the selected category
+const winterIdInt = parseInt(winterId);
+const itemIdInt = parseInt(itemId);
+
+if (winterIdInt >= 0 && winterIdInt < winterItems.length) {
+  const items = winterItems[winterIdInt].items;
+  if (itemIdInt >= 0 && itemIdInt < items.length) {
+    res.json(items[itemIdInt]);
   } else {
-    res.status(404).json({ error: "Category not found" }); // Return 404 if category doesn't exist
+    res.status(404).json({ error: "Item not found" });
   }
-});
+} else {
+  res.status(404).json({ error: "Category not found" });
+}
+};
 
-module.exports = router;
+module.exports = { getWinterImages, getWinterItemById  };

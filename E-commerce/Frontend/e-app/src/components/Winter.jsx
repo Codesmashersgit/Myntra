@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 function Winter() {
   const [winter, setWinter] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:8000/api/winter/winter")
+    fetch("http://localhost:8000/api/winter-images")
       .then((res) => res.json())
       .then((data) => setWinter(data))
       .catch((err) => console.log(err));

@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Nav from '../Nav';
-import Footer from '../Footer';
 import Saree from './Saree';
 
 function SareeDetails({ dark, toggle }) {
@@ -37,8 +36,14 @@ function SareeDetails({ dark, toggle }) {
 
   return (
     <>
-      <Nav showprofile={false} showsearch={false} showcontent={true} dark={dark} toggle={toggle} />
-      <div className={`flex flex-col items-center lg:pt-28 pt-32 ${dark ? 'bg-black text-white' : 'bg-white text-black'}`}>
+   
+      <Nav showprofile={false} showcontent={true} dark={dark} toggle={toggle} />
+      <div
+        className={`lg:pt-28 pt-32 ${
+          dark ? "bg-black text-white" : "bg-white text-black "
+        } transition-all duration-1000 ease-in-out`}
+      >
+  
         <div className="flex lg:flex-row gap-10">
           <div className="flex gap-5 flex-wrap w-[63%] pl-5">
           {saree.imageurl.map((imageUrl, index) => (
@@ -86,9 +91,13 @@ function SareeDetails({ dark, toggle }) {
 
           </div>
           
-        </div>
-      </div>
+         
+     </div>
       <Saree/>
+      </div>
+    
+      
+  
     </>
   );
 }

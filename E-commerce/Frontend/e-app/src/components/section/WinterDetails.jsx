@@ -15,7 +15,7 @@ function WinterDetails({ dark, toggle }) {
     useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/winter/winter/${winterId}`)
+    fetch(`http://localhost:8000/api/winter-items/${winterId}/${itemId}`)
       .then((res) => res.json())
       .then((data) => {console.log(data)
         setwinterItems(data)})
@@ -120,10 +120,54 @@ function WinterDetails({ dark, toggle }) {
           <Footer />
         </div>
       </div>
+     
 
     </>
   );
 }
 
 export default WinterDetails;
+
+// import React, { useState, useEffect } from "react";
+
+// const WinterDetails = ({ winterId, itemId }) => {
+//   const [item, setItem] = useState(null);
+//   const [error, setError] = useState(null);
+
+//   useEffect(() => {
+//     // Fetch specific winter item based on winterId and itemId
+//     const fetchWinterItem = async () => {
+//       try {
+//         const response = await fetch(`http://localhost:8000/api/winter-items/${winterId}/${itemId}`);
+//         if (!response.ok) {
+//           throw new Error("Failed to fetch item");
+//         }
+//         const data = await response.json();
+//         setItem(data);
+//       } catch (error) {
+//         setError(error.message);
+//       }
+//     };
+
+//     fetchWinterItem();
+//   }, [winterId, itemId]);
+
+//   return (
+//     <div>
+//       {error && <p>{error}</p>}
+//       {item ? (
+//         <div>
+//           <img src={item.imageUrl} alt={item.description} />
+//           <h3>{item.description}</h3>
+//           <p>{item.price}</p>
+//         </div>
+//       ) : (
+//         <p>Loading item...</p>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default WinterDetails;
+
 

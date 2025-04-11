@@ -37,21 +37,11 @@ function CategoryDetails({ dark, toggle }) {
     <>
       <Nav
         showprofile={false}
-        showsearch={false}
         showcontent={true}
         dark={dark}
         toggle={toggle}
       />
-      {showCartNotification && (
-        <div className="fixed top-0 right-0 m-4 p-2 bg-green-500 text-white rounded">
-          Item added to cart
-        </div>
-      )}
-      {showWishlistNotification && (
-        <div className="fixed top-0 right-0 m-4 p-2 bg-blue-500 text-white rounded">
-          Item added to wishlist
-        </div>
-      )}
+    
 
       <div
         className={`flex lg:pt-28 pt-32 flex-wrap justify-center gap-5 ${
