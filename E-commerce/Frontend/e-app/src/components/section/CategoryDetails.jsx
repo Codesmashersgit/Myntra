@@ -63,12 +63,15 @@ function CategoryDetails({ dark, toggle }) {
                 {item.rating}
                 <p className="text-green-700">★</p>
               </div>
+             
               <img
                 loading="lazy"
                 src={item.imageUrl}
                 className="md:h-[300px] h-[200px] object-contain cursor-pointer"
               />
+             
             </div>
+            
 
             <div className="flex justify-between ml-2 mt-2">
               <div className="flex gap-2 items-center">

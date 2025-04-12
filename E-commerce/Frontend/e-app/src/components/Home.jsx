@@ -16,17 +16,28 @@ function Home() {
   const [imageurls6,setimageurls6]= useState([]);
   const [imageurls7,setimageurls7]= useState([]);
 
-  const settings = {
+  const getslider = (slideshow,slidescroll) => ({
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
+    slidesToShow: slideshow,
+    slidesToScroll:slidescroll,
     arrows: false,
     autoplay: true, 
   autoplaySpeed: 3000,
   pauseOnHover: true,
-  };
+  responsive: [
+    {
+      breakpoint: 768, 
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      },
+    },
+  ],
+});
+const setting1= getslider(5,5);
+const setting2= getslider(3,3);
 
   useEffect(()=>{
     fetch("http://localhost:8000/api/home/images1")
@@ -95,7 +106,7 @@ function Home() {
         <img
           key={index}
           src={url}
-          className="w-auto h-auto max-w-full"
+          className="w-auto h-auto max-w-full cursor-pointer"
           
         />
       ))}
@@ -107,7 +118,7 @@ function Home() {
                 <img  loading='lazy'
                 key={index}
                 src={url}
-                className="w-auto h-auto max-w-full"
+                className="w-auto h-auto max-w-full cursor-pointer"
                 
                 />
               ))}
@@ -117,7 +128,7 @@ function Home() {
               {imageurls3.map((url,index)=>(
                 <img  loading='lazy'
                 key={index} 
-                src={url}
+                src={url} className="cursor-pointer"
                 />
               ))}
             </div>
@@ -125,25 +136,30 @@ function Home() {
           <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_600,c_limit,fl_progressive/assets/images/2025/FEBRUARY/3/D8eVNGcK_1db27a5e87e442f487655249b4350970.jpg" />
           
             </div>
-            <div className="lg:hidden flex h-[170px] m-1 gap-2 overflow-x-auto scrollbar-hidden">
+            <div className="lg:hidden ">
+            <Slider {...setting2}>
             {imageurls4.map((url,index)=>(
-              <img  loading='lazy'
+              <img loading='lazy'
               key={index}
-              src={url}
+              src={url} className="cursor-pointer"
               />
               
             ))}
+            </Slider>
+            
             </div>
 
             <div className="flex flex-col lg:hidden">
             <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_600,c_limit,fl_progressive/assets/images/2025/FEBRUARY/25/A40Nmrrp_33cdac3ecbc64271a6567078bc3ba8fd.jpg" />
             </div>
-            <div className="flex h-[200px] gap-1 m-1 overflow-x-auto scrollbar-hidden md:h-[300px] ">
+            <div className="lg:hidden ">
+              <Slider {...setting2}>
             {imageurls5.map((url,index)=>(
-              <img  loading='lazy' key={index}
-              src={url}
+              <img loading='lazy' key={index}
+              src={url} className="cursor-pointer "
               />
             ))}
+            </Slider>
             </div>
             <div className="flex flex-wrap gap-1 justify-center ">
           <img
@@ -167,18 +183,9 @@ function Home() {
         </div>
        
         
-      
-        {/* <div className="flex h-[250px] md:h-[400px] gap-1 m-1 overflow-x-auto scrollbar-hidden ">
-            {imageurls6.map((url,index)=>(
-              <img  loading='lazy' key={index}
-              src={url}
-              />
-
-            ))}
-            </div> */}
-           <Slider {...settings}>
+           <Slider {...setting1}>
   {imageurls6.map((url, index) => (
-    <img key={index} src={url} className=" mt-3 h-[120px] md:h-[400px] md:w-[250px]" />
+    <img key={index} src={url} className=" mt-3 md:h-[400px] md:w-[250px] cursor-pointer" />
   ))}
 </Slider>
            
