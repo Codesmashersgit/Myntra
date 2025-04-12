@@ -32,9 +32,9 @@ const categorycart = require("./Routes/CategoriesCart");
 const saree = require("./Routes/Women/Saree");
 
 
-app.use("/api/home", home);
-app.use("/api/category", category);
-app.use("/api/categorycart", categorycart);
+app.use("/api", home);
+app.use("/api", category);
+app.use("/api", categorycart);
 app.use("/api/women", saree);
 
 app.listen(port, () => {

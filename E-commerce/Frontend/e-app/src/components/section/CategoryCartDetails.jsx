@@ -15,11 +15,11 @@ function CategoryCartDetails({ dark, toggle }) {
     useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/categorycart/categorycart/${categorycartId}`)
+    fetch(`http://localhost:8000/api/categorycart/categoryitems/${categorycartId}`)
       .then((res) => res.json())
       .then((data) => setCategoryItems(data))
       .catch((err) => console.log("Error fetching category details:", err));
-  }, [categoryId]);
+  }, [categorycartId]);
 
   const addToCart = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
@@ -75,7 +75,7 @@ function CategoryCartDetails({ dark, toggle }) {
               </div>
               <img
                 loading="lazy"
-                src={item.imageUrl}
+                src={item.imageUrl[0]}
                 className="md:h-[300px] h-[200px] object-contain cursor-pointer"
               />
             </div>

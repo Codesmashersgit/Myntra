@@ -40,7 +40,7 @@ const setting1= getslider(5,5);
 const setting2= getslider(3,3);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/home/images1")
+    fetch("http://localhost:8000/api/images1")
     .then(res=>res.json())
     .then(data=>setimageurls1(data))
     .catch(err=>console.log(err))
@@ -48,7 +48,7 @@ const setting2= getslider(3,3);
 
   },[]);
   useEffect(()=>{
-    fetch("http://localhost:8000/api/home/images2")
+    fetch("http://localhost:8000/api/images2")
     .then(res=>res.json())
     .then(data=>setimageurls2(data))
     .catch(err=>console.log(err))
@@ -56,21 +56,21 @@ const setting2= getslider(3,3);
   },[]);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/home/images3")
+    fetch("http://localhost:8000/api/images3")
     .then(res=>res.json())
     .then(data=>setimageurls3(data))
     .catch(err=>console.log(err))
   },[]);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/home/images4")
+    fetch("http://localhost:8000/api/images4")
     .then(res=>res.json())
     .then(data=>setimageurls4(data))
     .catch(err=>console.log(err))
 
   },[]);
   useEffect(()=>{
-    fetch("http://localhost:8000/api/home/images5")
+    fetch("http://localhost:8000/api/images5")
     .then(res=>res.json())
     .then(data=>setimageurls5(data))
     .catch(err=>console.log(err))
@@ -78,14 +78,14 @@ const setting2= getslider(3,3);
   },[]);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/home/images6")
+    fetch("http://localhost:8000/api/images6")
     .then(res=>res.json())
     .then(data=>setimageurls6(data))
     .catch(err=>console.log(err))
   },[]);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/home/images7")
+    fetch("http://localhost:8000/api/images7")
     .then(res=>res.json())
     .then(data=>setimageurls7(data))
     .catch(err=>console.log(err))

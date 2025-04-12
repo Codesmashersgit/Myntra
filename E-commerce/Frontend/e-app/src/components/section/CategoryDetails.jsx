@@ -15,7 +15,7 @@ function CategoryDetails({ dark, toggle }) {
     useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/category/category/${categoryId}`)
+    fetch(`http://localhost:8000/api/category/${categoryId}`)
       .then((res) => res.json())
       .then((data) => setCategoryItems(data))
       .catch((err) => console.log("Error fetching category details:", err));
@@ -103,7 +103,7 @@ function CategoryDetails({ dark, toggle }) {
         ))}
         <div>
           <p
-            className={` m-7 ${
+            className={`m-7 ${
               dark
                 ? "border border-slate-50 opacity-10"
                 : "border border-b-[1px]"
