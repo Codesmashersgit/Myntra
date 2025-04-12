@@ -44,13 +44,12 @@ function SareeDetails({ dark, toggle }) {
         } transition-all duration-1000 ease-in-out`}
       >
   
-        <div className="flex lg:flex-row gap-10">
+        <div className="flex gap-10">
           <div className="flex gap-5 flex-wrap w-[63%] pl-5">
           {saree.imageurl.map((imageUrl, index) => (
           <img
             key={index}
             src={imageUrl}
-            alt={`Saree Image ${index + 1}`}
             className="w-[450px]"
           />
         ))}

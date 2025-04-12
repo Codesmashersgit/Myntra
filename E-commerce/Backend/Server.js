@@ -5,7 +5,6 @@ const app = express();
 
 const rateLimit = require("express-rate-limit"); // For rate limiting
 const otpController = require('./Controllers/OtpController');
-const {getWinterImages, getWinterItemById} = require("./Controllers/WinterController");
 
 const port = process.env.PORT;
  // Import the OTP controller
@@ -27,20 +26,17 @@ app.use('/api/auth/send-otp', otpLimiter);
 app.post('/api/auth/send-otp', otpController.sendOtp); // Use OTP controller for sending OTP
 app.post('/api/auth/verify-otp', otpController.verifyOtp); // Use OTP controller for verifying OTP
 
-const body = require("./Routes/body");
+const home= require("./Routes/Home");
 const category = require("./Routes/Category");
 const categorycart = require("./Routes/CategoriesCart");
-// const Winter = require("./Routes/WinterRoutes");
 const saree = require("./Routes/Women/Saree");
-const winterRouter = require('./Routes/WinterRoutes');
 
-app.use("/api/body", body);
+
+app.use("/api/home", home);
 app.use("/api/category", category);
 app.use("/api/categorycart", categorycart);
-// app.use("/api/winter", Winter);
 app.use("/api/women", saree);
 
-app.use("/api",winterRouter);
 app.listen(port, () => {
   console.log(`Server is running at port ${port}`);
 });

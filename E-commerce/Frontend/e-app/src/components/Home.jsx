@@ -1,6 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import '../app.css';
+
 
 function Home() {
   const [imageurls1,setimageurls1] = useState([]);
@@ -10,8 +15,21 @@ function Home() {
   const [imageurls5,setimageurls5]=  useState([]);
   const [imageurls6,setimageurls6]= useState([]);
   const [imageurls7,setimageurls7]= useState([]);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    arrows: false,
+    autoplay: true, 
+  autoplaySpeed: 3000,
+  pauseOnHover: true,
+  };
+
   useEffect(()=>{
-    fetch("http://localhost:8000/api/body/images1")
+    fetch("http://localhost:8000/api/home/images1")
     .then(res=>res.json())
     .then(data=>setimageurls1(data))
     .catch(err=>console.log(err))
@@ -19,7 +37,7 @@ function Home() {
 
   },[]);
   useEffect(()=>{
-    fetch("http://localhost:8000/api/body/images2")
+    fetch("http://localhost:8000/api/home/images2")
     .then(res=>res.json())
     .then(data=>setimageurls2(data))
     .catch(err=>console.log(err))
@@ -27,21 +45,21 @@ function Home() {
   },[]);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/body/images3")
+    fetch("http://localhost:8000/api/home/images3")
     .then(res=>res.json())
     .then(data=>setimageurls3(data))
     .catch(err=>console.log(err))
   },[]);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/body/images4")
+    fetch("http://localhost:8000/api/home/images4")
     .then(res=>res.json())
     .then(data=>setimageurls4(data))
     .catch(err=>console.log(err))
 
   },[]);
   useEffect(()=>{
-    fetch("http://localhost:8000/api/body/images5")
+    fetch("http://localhost:8000/api/home/images5")
     .then(res=>res.json())
     .then(data=>setimageurls5(data))
     .catch(err=>console.log(err))
@@ -49,14 +67,14 @@ function Home() {
   },[]);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/body/images6")
+    fetch("http://localhost:8000/api/home/images6")
     .then(res=>res.json())
     .then(data=>setimageurls6(data))
     .catch(err=>console.log(err))
   },[]);
 
   useEffect(()=>{
-    fetch("http://localhost:8000/api/body/images7")
+    fetch("http://localhost:8000/api/home/images7")
     .then(res=>res.json())
     .then(data=>setimageurls7(data))
     .catch(err=>console.log(err))
@@ -120,7 +138,7 @@ function Home() {
             <div className="flex flex-col lg:hidden">
             <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_600,c_limit,fl_progressive/assets/images/2025/FEBRUARY/25/A40Nmrrp_33cdac3ecbc64271a6567078bc3ba8fd.jpg" />
             </div>
-            <div className="flex h-[200px] gap-1 m-1 overflow-x-auto scrollbar-hidden lg:hidden ">
+            <div className="flex h-[200px] gap-1 m-1 overflow-x-auto scrollbar-hidden md:h-[300px] ">
             {imageurls5.map((url,index)=>(
               <img  loading='lazy' key={index}
               src={url}
@@ -150,15 +168,19 @@ function Home() {
        
         
       
-        <div className="flex h-[250px] gap-1 m-1 overflow-x-auto scrollbar-hidden lg:hidden">
+        {/* <div className="flex h-[250px] md:h-[400px] gap-1 m-1 overflow-x-auto scrollbar-hidden ">
             {imageurls6.map((url,index)=>(
               <img  loading='lazy' key={index}
               src={url}
               />
 
             ))}
-            </div>
-           
+            </div> */}
+           <Slider {...settings}>
+  {imageurls6.map((url, index) => (
+    <img key={index} src={url} className=" mt-3 h-[120px] md:h-[400px] md:w-[250px]" />
+  ))}
+</Slider>
            
             
         

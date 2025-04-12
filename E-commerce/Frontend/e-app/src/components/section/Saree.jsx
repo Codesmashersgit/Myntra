@@ -78,7 +78,7 @@ function Saree({ dark, toggle }) {
             </div>
             <div className="flex justify-between items-center">
               <h3 className='mt-2 text-lg font-[sk]'>{item.name}</h3>
-              <div className="flex gap-2 pt-2">
+              <div className="flex md:gap-2 pt-2">
                 <button onClick={() => AddToWishlist(item)} className="font-[sk]">
                   <FaRegHeart />
                 </button>

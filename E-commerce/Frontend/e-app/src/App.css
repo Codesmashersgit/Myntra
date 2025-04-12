@@ -34,3 +34,19 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.black-overlay{
+  background-color: rgba(0, 0, 0,0.7);
+  
+}
+
+.slick-dots li button:before {
+  font-size: 20px !important; /* Default is 6px, so increase it */
+  color: #000; /* active/inactive color */
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #474041; /* active dot color */
+  opacity: 1;
+}

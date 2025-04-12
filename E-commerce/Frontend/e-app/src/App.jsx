@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Categories from "./components/Categories";
-import Winter from "./components/Winter";
+// import Winter from "./components/Winter";
 import CategoriesCart from "./components/CategoriesCart";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
@@ -11,7 +11,7 @@ import Saree from "./components/section/Saree";
 import CategoryDetails from "./components/section/CategoryDetails";
 import SareeDetails from "./components/section/SareeDetails";
 import CategoryCartDetails from "./components/section/CategoryCartDetails";
-import WinterDetails from "./components/section/WinterDetails";
+// import WinterDetails from "./components/section/WinterDetails";
 import "./App.css";
 
 function App() {
@@ -45,8 +45,6 @@ function App() {
           element={<CategoryCartDetails dark={dark} toggle={toggle} />}
         />
          
-          <Route path="/winter/:winterId/:itemId" element={<WinterDetails dark={dark} toggle={toggle} />} />
-       
       </Routes>
     </Router>
   );
@@ -63,7 +61,7 @@ function Mainpage({ dark, toggle }) {
 
       <Home />
       <Categories />
-      <Winter />
+      {/* <Winter /> */}
       <CategoriesCart />
       
       <Footer />
