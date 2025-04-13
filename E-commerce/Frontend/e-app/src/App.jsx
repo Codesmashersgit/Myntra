@@ -41,7 +41,7 @@ function App() {
         />
 
         <Route
-          path="/categorycart/:categorycartId"
+          path="/categoryitems/:categorycartId"
           element={<CategoryCartDetails dark={dark} toggle={toggle} />}
         />
          
