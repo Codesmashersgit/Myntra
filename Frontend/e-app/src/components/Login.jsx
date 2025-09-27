@@ -3,7 +3,11 @@
 import React, { useState } from "react";
 import Nav from "./Nav"
 
-function Login({ dark, toggle }) {
+function Login({
+  dark,
+  toggle,
+  showcart=true,
+  }) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
@@ -74,11 +78,10 @@ function Login({ dark, toggle }) {
     
     <>
   <Nav
-        showprofile={false}
-        showsearch={false}
-        showcontent={false}
         dark={dark}
         toggle={toggle}
+        showcart={showcart}
+       
       />
       <form onSubmit={handleSubmit}>
         <div

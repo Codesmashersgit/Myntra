@@ -13,6 +13,7 @@ import SareeDetails from "./components/section/SareeDetails";
 import CategoryCartDetails from "./components/section/CategoryCartDetails";
 // import WinterDetails from "./components/section/WinterDetails";
 import Wishlist from './components/section/Wishlist'
+import Cart from "./components/section/Cart"
 import "./App.css";
 
 function App() {
@@ -27,13 +28,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Mainpage dark={dark} toggle={toggle} />} />
 
-       <Route path="/login" element={<Login dark={dark} toggle={toggle} />} />
+       <Route path="/login" element={<Login dark={dark} toggle={toggle}/> } />
 
         <Route path="/saree" element={<Saree dark={dark} toggle={toggle} />} />
          <Route
           path="/wishlist"
           element={<Wishlist dark={dark} toggle={toggle} />}
+          
         />
+        <Route
+          path="/cart"
+          element={<Cart dark={dark} toggle={toggle} />}
+          />
 
         <Route
           path="/category/:categoryId"
@@ -63,7 +69,7 @@ function Mainpage({ dark, toggle }) {
         dark ? "bg-black text-white" : "bg-white text-black"
       } transition-all duration-1000 ease-in-out`}
     >
-      <Nav dark={dark} toggle={toggle} showprofile={true} showcontent={true} />
+      <Nav dark={dark} toggle={toggle} showprofile={true} showcontent={true} showsearch={true} showcart={true} showdisplay={false}/>
 
       <Home />
       <Categories />

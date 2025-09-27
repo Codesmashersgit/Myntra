@@ -17,7 +17,7 @@ import HomeLiving from "../Submenu/HomeLiving";
 import Beauty from "../Submenu/Beauty";
 import { Topwear } from "../Data/Data";
 
-function Nav({ dark, toggle, showprofile, showcontent }) {
+function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdisplay }) {
   const { state } = useGlobalState();
   const [open, setOpen] = useState(false);
   const [openDropdowns, setOpenDropdowns] = useState({
@@ -93,7 +93,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
   />
 </Link>
 
-       
+       {showcontent && (
         <div className="lg:flex gap-11 hidden">
           <div className="flex gap-11">
             <li className="list-none group relative">
@@ -121,7 +121,6 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-pink-400 transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Women
               </a>
-              {showcontent && (
                 <div
                   className={`absolute p-6 -left-28 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out  `}
                 >
@@ -133,13 +132,13 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                     <Women />
                   </div>
                 </div>
-              )}
+
             </li>
             <li className="list-none group relative">
               <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-[#e67e22] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Kids
               </a>
-              {showcontent && (
+          
                 <div
                   className={`absolute p-6 -left-52 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out  `}
                 >
@@ -151,13 +150,13 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                     <Kids />
                   </div>
                 </div>
-              )}
+             
             </li>
             <li className="list-none group relative">
               <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-[#f1c40f] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Home & Living
               </a>
-              {showcontent && (
+             
                 <div
                   className={`absolute p-6 -left-72 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
                 >
@@ -169,13 +168,13 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                     <HomeLiving />
                   </div>
                 </div>
-              )}
+           
             </li>
             <li className="list-none group relative">
               <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] hover:border-[#9b59b6] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Beauty
               </a>
-              {showcontent && (
+             
                 <div
                   className={`absolute block p-6 -left-[430px] top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
                 >
@@ -187,7 +186,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                     <Beauty />
                   </div>
                 </div>
-              )}
+             
             </li>
 
             <li className="list-none group relative">
@@ -198,7 +197,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                 Studio
                 <sup className="text-[12px] text-[#ff3f6c]">New</sup>
               </a>
-              {showcontent && (
+             
                 <div
                   className={`absolute p-6 -left-60 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out`}
                 >
@@ -226,11 +225,14 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                     </div>
                   </div>
                 </div>
-              )}
+             
+              
             </li>
           </div>
         </div>
-
+        )}
+      
+{showsearch &&
         <div className="md:flex hidden relative">
           <CiSearch className="absolute top-3 left-3 text-black cursor-pointer transition-transform transform hover:scale-125" />
           <input
@@ -241,6 +243,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
             spellCheck="false"
             className={`outline-none shadow-lg rounded-md w-[500px] sm:pl-14 md:pl-12 pr-3 py-2`}
           />
+
           {showSuggestions && searchResults.length > 0 && (
             <div
               className={`absolute top-12 left-0 w-full bg-white shadow-lg rounded-md z-50 ${
@@ -255,10 +258,12 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
                 >
                   {product.name}
                 </div>
+
               ))}
             </div>
           )}
         </div>
+}
 
         {searchQuery && searchResults.length > 0 && (
           <div
@@ -285,7 +290,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
             </div>
           </div>
         )}
-
+      
         <div className="flex md:gap-7 gap-4 items-center">
           <div className="flex flex-col group relative">
             {showprofile && (
@@ -351,7 +356,7 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               </div>
             </div>
           </div>
-
+{showcart && (
           <div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
             <PiHeartLight className="md:text-[20.3px]" />
             <p className="absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
@@ -363,8 +368,9 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               </span>
             )}
           </div>
-
-          <div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
+)}
+{showcart && (
+         <Link to="/Cart"><div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
             <PiHandbagThin className="text-[20.3px]" />
             <p className="absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
               Cart
@@ -375,6 +381,18 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
               </span>
             )}
           </div>
+          </Link>
+)}
+
+{showdisplay && (
+  <div className="flex items-center gap-5">
+    <img className="h-10 " src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png"/>
+    <p className="font-[sk]">100% SECURE</p>
+  </div>
+)
+}
+
+
 
           <div className="flex flex-col items-center cursor-pointer group relative">
             {dark ? (
