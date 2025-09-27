@@ -5,7 +5,7 @@ const GlobalStateContext = createContext();
 const initialState = {
   cart: [],
   wishlist: [],
-  sarees: [], 
+  sarees: [],
 };
 
 const reducer = (state, action) => {
@@ -15,11 +15,86 @@ const reducer = (state, action) => {
         alert("Cart can only contain up to 20 items.");
         return state;
       }
-      return { ...state, cart: [...state.cart, action.payload] };
+      const cartIndex = state.cart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      if (cartIndex !== -1) {
+        // If item already in cart, increment quantity & update totalPrice
+        const updatedCart = [...state.cart];
+        const currentItem = updatedCart[cartIndex];
+        const newQuantity = (currentItem.quantity || 1) + 1;
+        const price = Number(item.price);
+        updatedCart[cartIndex] = {
+          ...currentItem,
+          quantity: newQuantity,
+          totalPrice: newQuantity * price,
+        };
+        return { ...state, cart: updatedCart };
+      }
+      // New item added to cart, set quantity=1 and totalPrice = price
+      return {
+        ...state,
+        cart: [
+          ...state.cart,
+          {
+            ...action.payload,
+            quantity: 1,
+            totalPrice: Number(action.payload.price) ,
+          },
+        ],
+      };
 
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload),
+      };
+
+    case "INCREMENT_QUANTITY":
+      return {
+        ...state,
+        cart: state.cart.map((item) => {
+          if (item.id === action.payload) {
+            const newQuantity = (item.quantity || 1) + 1;
+            const price = Number(item.price);
+            return {
+              ...item,
+              quantity: newQuantity,
+              totalPrice: newQuantity * price,
+            };
+          }
+          return item;
+        }),
+      };
+
+    case "DECREMENT_QUANTITY":
+      return {
+        ...state,
+        cart: state.cart.map((item) => {
+          if (item.id === action.payload) {
+            const newQuantity = (item.quantity || 1) - 1;
+            if (newQuantity < 1) {
+              return item;
+            }
+            const price = Number(item.price) || 1;
+            return {
+              ...item,
+              quantity: newQuantity,
+              totalPrice: newQuantity * price,
+            };
+          }
+          return item;
+        }),
+      };
+
+    // Wishlist cases unchanged...
     case "ADD_TO_WISHLIST":
       if (state.wishlist.length >= 20) {
         alert("Wishlist can only contain up to 20 items.");
+        return state;
+      }
+      if (state.wishlist.find((item) => item.id === action.payload.id)) {
+        alert("Item already in wishlist.");
         return state;
       }
       return { ...state, wishlist: [...state.wishlist, action.payload] };
@@ -54,8 +129,6 @@ export const GlobalStateProvider = ({ children }) => {
   );
 };
 
-export const useGlobalState = () => {
-  return useContext(GlobalStateContext);
-};
+export const useGlobalState = () => useContext(GlobalStateContext);
 
 export default GlobalStateContext;
