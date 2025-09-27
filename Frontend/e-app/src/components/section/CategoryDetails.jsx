@@ -6,13 +6,14 @@ import { PiHandbagThin } from "react-icons/pi";
 import { useGlobalState } from "../../context/GlobalState";
 import Footer from "../Footer";
 
+// Toastify imports
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function CategoryDetails({ dark, toggle }) {
   const { state, dispatch } = useGlobalState();
   const { categoryId } = useParams();
   const [categoryItems, setCategoryItems] = useState([]);
-  const [showCartNotification, setShowCartNotification] = useState(false);
-  const [showWishlistNotification, setShowWishlistNotification] =
-    useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:8000/api/category/${categoryId}`)
@@ -22,36 +23,32 @@ function CategoryDetails({ dark, toggle }) {
   }, [categoryId]);
 
   const addToCart = (item) => {
+    if (state.cart.length >= 20) {
+      toast.error("Cart can only contain up to 20 items.");
+      return;
+    }
     dispatch({ type: "ADD_TO_CART", payload: item });
-    setShowCartNotification(true);
-    setTimeout(() => setShowCartNotification(false), 3000);
+    toast.success("Item added to cart!");
   };
 
-  const AddToWishlist = (item) => {
+  const addToWishlist = (item) => {
+    if (state.wishlist.length >= 20) {
+      toast.error("Wishlist can only contain up to 20 items.");
+      return;
+    }
     dispatch({ type: "ADD_TO_WISHLIST", payload: item });
-    setShowWishlistNotification(true);
-    setTimeout(() => setShowWishlistNotification(false), 3000);
+    toast.success("Item added to wishlist!");
   };
 
   return (
     <>
-      <Nav
-        showprofile={false}
-        showcontent={true}
-        dark={dark}
-        toggle={toggle}
-      />
-    
+      <Nav showprofile={false} showcontent={true} dark={dark} toggle={toggle} />
 
       <div
         className={`flex lg:pt-28 pt-32 flex-wrap justify-center gap-5 ${
           dark ? "bg-black text-white" : "bg-white text-black "
         } transition-all duration-1000 ease-in-out`}
       >
-      
-    
-      
-      
         {categoryItems.map((item, index) => (
           <div key={index} className="flex flex-col group">
             <div className="relative group">
@@ -63,42 +60,32 @@ function CategoryDetails({ dark, toggle }) {
                 {item.rating}
                 <p className="text-green-700">★</p>
               </div>
-             
+
               <img
                 loading="lazy"
                 src={item.imageUrl}
                 className="md:h-[300px] h-[200px] object-contain cursor-pointer"
+                alt={item.description}
               />
-             
             </div>
-            
 
             <div className="flex justify-between ml-2 mt-2">
               <div className="flex gap-2 items-center">
-                <p className="text-sm text-red-500 font-[sk]">
-                  {item.price}
-                </p>
+                <p className="text-sm text-red-500 font-[sk]">{item.price}</p>
                 <p className="text-xs text-gray-500 line-through">
                   {item.discountedPrice}
                 </p>
               </div>
-              <div className="flex gap-2  ">
-                <button
-                  onClick={() => AddToWishlist(item)}
-                  className="font-[sk]"
-                >
+              <div className="flex gap-2">
+                <button onClick={() => addToWishlist(item)} className="font-[sk]">
                   <FaRegHeart />
                 </button>
-                <button
-                  onClick={() => addToCart(item)}
-                  className="p-2 rounded-full"
-                >
+                <button onClick={() => addToCart(item)} className="p-2 rounded-full">
                   <PiHandbagThin />
                 </button>
               </div>
             </div>
             <p className="text-sm pl-1 w-full flex-wrap">{item.description}</p>
-            
           </div>
         ))}
         <div>
@@ -113,9 +100,21 @@ function CategoryDetails({ dark, toggle }) {
         </div>
       </div>
 
+      {/* Toast container */}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={dark ? "dark" : "light"}
+      />
     </>
   );
 }
 
 export default CategoryDetails;
-
