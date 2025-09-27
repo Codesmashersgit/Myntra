@@ -56,8 +56,6 @@ function App() {
 }
 
 function Mainpage({ dark, toggle }) {
-  console.log("dark", dark);
-  console.log("toggle", toggle);
   return (
     
     <div

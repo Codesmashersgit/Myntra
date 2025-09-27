@@ -22,7 +22,7 @@ function Men() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70"
               >
-                <a href={item.url}>{item.title}</a>
+                <a  target="_blank" href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -36,7 +36,7 @@ function Men() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+                <a  target="_blank" href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -49,7 +49,7 @@ function Men() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+               <a target="_blank" href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -62,7 +62,7 @@ function Men() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+                <a target="_blank" href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -75,7 +75,7 @@ function Men() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+                <a target="_blank" href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -88,7 +88,7 @@ function Men() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+              <a target="_blank" href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -102,7 +102,7 @@ function Men() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+                <a target="_blank" href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -115,7 +115,7 @@ function Men() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+              <a target="_blank" href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>

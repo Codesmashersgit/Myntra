@@ -94,10 +94,18 @@ const setting2= getslider(3,3);
     
       <div className={`pt-[123px] md:pt-0`}>
         <div className="flex">
-        <a href="http://localhost:5173/category/11" target='_blank'><img
-            src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2025/FEBRUARY/22/UYTb09rd_11e4f9a1cc624efa9c638013041941e5.gif"
-            className="md:mt-20 sm:mt-10 cursor-pointer lg:h-[400px] lg:flex mx-auto p-2 hidden"
-          />
+        <a href="http://localhost:5173/category/11" target='_blank'>
+        <span className="inline-flex justify-center items-center pt-24">
+  <img
+    src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2025/SEPTEMBER/27/OHAiIBod_eeab3d6a600c4ab6b06b1cfd2a276030.jpg"
+    className=" cursor-pointer lg:h-[400px] lg:flex hidden"
+  />
+  <img
+    src="https://assets.myntassets.com/f_webp,w_490,c_limit,fl_progressive,dpr_2.0/assets/images/2025/SEPTEMBER/27/IVXASZWE_b75cfd50e6934fd3b1c59b59fd35bf0b.jpg"
+    className="cursor-pointer lg:h-[400px] lg:flex hidden"
+  />
+</span>
+
           </a>
          
              <div className="lg:hidden flex h-[100px] m-1 gap-2 overflow-x-auto scrollbar-hidden">

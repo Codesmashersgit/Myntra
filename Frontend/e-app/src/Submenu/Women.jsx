@@ -48,7 +48,7 @@ function Women() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+                 <a href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -61,7 +61,7 @@ function Women() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+                <a href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -87,7 +87,7 @@ function Women() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+                <a href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>
@@ -101,7 +101,7 @@ function Women() {
                 key={index}
                 className="cursor-pointer hover:opacity-100 opacity-70 "
               >
-                {item.title}
+                <a href={item.url}>{item.title}</a>
               </li>
             ))}
           </div>

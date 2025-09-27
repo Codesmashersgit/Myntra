@@ -1,15 +1,15 @@
 export const Topwear = [
   {
     title: "T-Shirts",
-    url: "https://www.myntra.com/men-tshirts",
+    url: "http://localhost:5173/category/0",
   },
   {
     title: "Casual Shirts",
-    url: "",
+    url: "http://localhost:5173/category/1",
   },
   {
     title: "Formal Shirts",
-    url: "",
+    url: "http://localhost:5173/category/2",
   },
   {
     title: "Sweatshirts",
@@ -105,7 +105,7 @@ export const Innerwear_Sleepwear = [
 export const Footwear = [
   {
     title: "Casual Shoes",
-    url: "#",
+    url: "http://localhost:5173/category/3",
   },
   {
     title: "Sports Shoes",
@@ -414,7 +414,7 @@ export const Sports_ActiveWear = [
 export const Lingerie_Sleepwear = [
   {
     title: "Bra",
-    url: "#",
+    url: "http://localhost:5173/categoryitems/7",
   },
   {
     title: "Briefs",

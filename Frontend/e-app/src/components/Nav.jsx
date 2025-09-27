@@ -85,11 +85,15 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
           dark ? "bg-black text-white" : "bg-white text-black "
         }`}
       >
-        <img
-          src={pic}
-          alt="Brand Logo"
-          className="md:h-[40px] h-[30px] w-auto md:px-7"
-        />
+        <Link to="/">
+  <img
+    src={pic}
+    alt="Brand Logo"
+    className="md:h-[40px] h-[30px] w-auto"
+  />
+</Link>
+
+       
         <div className="lg:flex gap-11 hidden">
           <div className="flex gap-11">
             <li className="list-none group relative">
@@ -618,34 +622,42 @@ function Nav({ dark, toggle, showprofile, showcontent }) {
         />
       </div>
 
-      <div
-        className={`md:hidden gap-7 text-center z-20 fixed bottom-0 flex w-full py-2 transition-all duration-1000 ease-in-out ${
-          dark ? "bg-black text-white" : "bg-white text-black"
-        }`}
-      >
-      <Link to="/wishlist"> <div className="flex flex-col items-center cursor-pointer w-[50%]">
-          <PiHeartLight />
-        
-          <p className="text-[12px] font-[sk]">Wishlist</p>
-          {state.wishlist.length > 0 && (
-            <span className="relative bottom-10 left-2 bg-red-500 text-white rounded-full text-[10px] w-3 h-3 flex items-center justify-center">
-              {state.wishlist.length}
-            </span>
-            
-          )}
-          
-        </div>
-        </Link>
-        <div className="flex flex-col items-center cursor-pointer w-[50%]">
-          <PiHandbagThin />
-          <p className="text-[12px] font-[sk]">Cart</p>
-          {state.cart.length > 0 && (
-            <span className="relative bottom-10 left-2  bg-red-500 text-white rounded-full text-[10px] w-3 h-3 flex items-center justify-center">
-              {state.cart.length}
-            </span>
-          )}
-        </div>
+     <div
+  className={`md:hidden  gap-7 text-center z-20 fixed bottom-0 flex w-full transition-all duration-1000 ease-in-out ${
+    dark ? "bg-black text-white" : "bg-white text-black"
+  }`}
+>
+  <div className="w-full flex justify-around items-center text-center p-3">
+    
+    {/* Wishlist */}
+    <Link to="/wishlist">
+      <div className="cursor-pointer relative flex flex-col items-center">
+        <PiHeartLight />
+        <p className="text-[12px] font-[sk] text-center">Wishlist</p>
+
+        {state.wishlist.length > 0 && (
+          <span className="absolute -top-2 left-6 bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
+            {state.wishlist.length}
+          </span>
+        )}
       </div>
+    </Link>
+
+    {/* Cart */}
+    <div className="cursor-pointer flex flex-col items-center relative">
+      <PiHandbagThin />
+      <p className="text-[12px] font-[sk] text-center">Cart</p>
+
+      {state.cart.length > 0 && (
+        <span className="absolute -top-2 left-3 bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
+          {state.cart.length}
+        </span>
+      )}
+    </div>
+    
+  </div>
+</div>
+
     </>
   );
 }

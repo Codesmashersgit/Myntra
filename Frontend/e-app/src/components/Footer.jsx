@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div
-      className={`flex md:gap-32 gap-14  font-[sk] text-[12px] pt-12 lg:flex-nowrap flex-wrap px-10 md:px-7 `}
+      className={`flex md:gap-32 gap-14 font-[sk] text-[12px] pt-12 lg:flex-nowrap flex-wrap px-10 md:px-7 `}
     >
       <div className="lg:px-24 md:px-8 ">
         <p className="uppercase">Online Shopping</p>
