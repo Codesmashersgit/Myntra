@@ -69,7 +69,7 @@ function Mainpage({ dark, toggle }) {
         dark ? "bg-black text-white" : "bg-white text-black"
       } transition-all duration-1000 ease-in-out`}
     >
-      <Nav dark={dark} toggle={toggle} showprofile={true} showcontent={true} showsearch={true} showcart={true} showdisplay={false}/>
+      <Nav dark={dark} toggle={toggle} showprofile={true} showcontent={true} showsearch={true} showcart={true} showdisplay={false} showbag={false}/>
 
       <Home />
       <Categories />

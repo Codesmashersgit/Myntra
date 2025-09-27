@@ -17,7 +17,7 @@ import HomeLiving from "../Submenu/HomeLiving";
 import Beauty from "../Submenu/Beauty";
 import { Topwear } from "../Data/Data";
 
-function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdisplay }) {
+function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdisplay,showbag }) {
   const { state } = useGlobalState();
   const [open, setOpen] = useState(false);
   const [openDropdowns, setOpenDropdowns] = useState({
@@ -29,6 +29,9 @@ function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdi
     studio: false,
     topwear: false,
   });
+  const steps = ["Bag", "Address", "Payment"];
+const activeStep = 1; 
+
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -231,6 +234,25 @@ function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdi
           </div>
         </div>
         )}
+        {showbag && (
+         <div className="flex items-center gap-4 font-[sk] text-sm sm:text-base">
+  {steps.map((step, index) => (
+    <React.Fragment key={index}>
+      <p className={
+        index + 1 === activeStep 
+          ? "text-blue-600 font-semibold"
+          : index + 1 < activeStep
+            ? "text-green-600"
+            : "text-gray-400"
+      }>
+        {step}
+      </p>
+      {index !== steps.length - 1 && <span className="text-gray-400">------</span>}
+    </React.Fragment>
+  ))}
+</div>
+
+        )}
       
 {showsearch &&
         <div className="md:flex hidden relative">
@@ -357,7 +379,7 @@ function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdi
             </div>
           </div>
 {showcart && (
-          <div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
+         <Link to="/Wishlist"><div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
             <PiHeartLight className="md:text-[20.3px]" />
             <p className="absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
               Wishlist
@@ -368,6 +390,8 @@ function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdi
               </span>
             )}
           </div>
+          </Link>
+
 )}
 {showcart && (
          <Link to="/Cart"><div className="lg:flex flex-col items-center cursor-pointer hidden group relative">

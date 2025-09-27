@@ -1,13 +1,14 @@
 import React from 'react'
 import Nav from '../Nav'
 
-const Cart = ({ dark, toggle, showdisplay}) => {
+const Cart = ({ dark, toggle, showdisplay,showbag}) => {
   return (
     <>
       <Nav
         dark={dark}
         toggle={toggle}
-        showdisplay
+        showdisplay={!showdisplay}
+        showbag={!showbag}
       />
       <div
         className={`h-screen w-screen flex flex-col justify-center items-center pt-7 ${

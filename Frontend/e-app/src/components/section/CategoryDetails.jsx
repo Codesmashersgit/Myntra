@@ -10,7 +10,7 @@ import Footer from "../Footer";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function CategoryDetails({ dark, toggle }) {
+function CategoryDetails({ dark, toggle, showsearch,showprofile, showcontent,showcart }) {
   const { state, dispatch } = useGlobalState();
   const { categoryId } = useParams();
   const [categoryItems, setCategoryItems] = useState([]);
@@ -42,7 +42,12 @@ function CategoryDetails({ dark, toggle }) {
 
   return (
     <>
-      <Nav showprofile={false} showcontent={true} dark={dark} toggle={toggle} />
+      <Nav showprofile={false}
+       showcontent={true} 
+       dark={dark}
+        toggle={toggle} 
+        showcart={true}
+        showsearch={true} />
 
       <div
         className={`flex lg:pt-28 pt-32 flex-wrap justify-center gap-5 ${
