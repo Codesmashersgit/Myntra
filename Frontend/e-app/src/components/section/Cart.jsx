@@ -31,8 +31,6 @@
 
 
 
-
-
 import React from "react";
 import Nav from "../Nav";
 import { useGlobalState } from "../../context/GlobalState";
@@ -83,53 +81,57 @@ const Cart = ({ dark, toggle, showdisplay, showbag }) => {
           dark ? "bg-black text-white" : "bg-white text-black"
         } transition-all duration-1000 ease-in-out`}
       >
-        {state.cart.map((item) => (
-          <div
-            key={item.id}
-            className={`p-2 w-[200px] h-[280px] border rounded-md flex flex-col items-center gap-2 ${
-              dark ? "border-gray-700" : "border-gray-300"
-            }`}
-          >
-            <img
-              src={item.imageUrl}
-              alt={item.description}
-              className="w-full h-[150px] object-contain"
-              loading="lazy"
-            />
-            <p className="text-sm font-[sk] text-center">{item.description}</p>
-            <p className="text-red-600 font-semibold">₹{`${item.price}`}</p>
-            
+        {state.cart.map((item) => {
+          const price =Number(item.price) || 0;
+          const totalPrice = item.quantity* price;
 
+          return (
+            <div
+              key={item.id}
+              className={`p-2 w-[200px] h-[280px] border rounded-md flex flex-col items-center gap-2 ${
+                dark ? "border-gray-700" : "border-gray-300"
+              }`}
+            >
+              <img
+                src={item.imageUrl}
+                alt={item.description}
+                className="w-full h-[150px] object-contain"
+                loading="lazy"
+              />
+              <p className="text-sm font-[sk] text-center">{item.description}</p>
+              <p className="text-red-600 font-semibold">₹{item.price}</p>
 
-            <div className="flex items-center justify-between w-full px-3">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center justify-between w-full px-3">
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => handleDecrement(item.id)}
+                    className="w-8 h-8 border rounded-md flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700"
+                  >
+                    -
+                  </button>
+                  <span className="font-medium">{item.quantity || 1}</span>
+                  <button
+                    onClick={() => handleIncrement(item.id)}
+                    className="w-8 h-8 border rounded-md flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700"
+                  >
+                    +
+                  </button>
+                </div>
                 <button
-                  onClick={() => handleDecrement(item.id)}
-                  className="w-8 h-8 border rounded-md flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700"
+                  onClick={() => handleRemove(item.id)}
+                  className="text-sm text-red-500 hover:underline"
                 >
-                  -
-                </button>
-                <span className="font-medium">{item.quantity}</span>
-                <button
-                  onClick={() => handleIncrement(item.id)}
-                  className="w-8 h-8 border rounded-md flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700"
-                >
-                  +
+                  Remove
                 </button>
               </div>
-              <button
-                onClick={() => handleRemove(item.id)}
-                className="text-sm text-red-500 hover:underline"
-              >
-                Remove
-              </button>
+
+              <p className="font-semibold mt-2">Total: ₹{totalPrice.toFixed(2)}</p>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </>
   );
 };
 
 export default Cart;
-

@@ -19,11 +19,10 @@ const reducer = (state, action) => {
         (item) => item.id === action.payload.id
       );
       if (cartIndex !== -1) {
-        // If item already in cart, increment quantity & update totalPrice
         const updatedCart = [...state.cart];
         const currentItem = updatedCart[cartIndex];
         const newQuantity = (currentItem.quantity || 1) + 1;
-        const price = Number(item.price);
+        const price = Number(currentItem.price) || 0;
         updatedCart[cartIndex] = {
           ...currentItem,
           quantity: newQuantity,
@@ -31,7 +30,6 @@ const reducer = (state, action) => {
         };
         return { ...state, cart: updatedCart };
       }
-      // New item added to cart, set quantity=1 and totalPrice = price
       return {
         ...state,
         cart: [
@@ -39,7 +37,7 @@ const reducer = (state, action) => {
           {
             ...action.payload,
             quantity: 1,
-            totalPrice: Number(action.payload.price) ,
+            totalPrice: Number(action.payload.price) || 0,
           },
         ],
       };
@@ -56,7 +54,7 @@ const reducer = (state, action) => {
         cart: state.cart.map((item) => {
           if (item.id === action.payload) {
             const newQuantity = (item.quantity || 1) + 1;
-            const price = Number(item.price);
+            const price = Number(item.price) || 0;
             return {
               ...item,
               quantity: newQuantity,
@@ -76,7 +74,7 @@ const reducer = (state, action) => {
             if (newQuantity < 1) {
               return item;
             }
-            const price = Number(item.price) || 1;
+            const price = Number(item.price) || 0;
             return {
               ...item,
               quantity: newQuantity,
@@ -87,7 +85,6 @@ const reducer = (state, action) => {
         }),
       };
 
-    // Wishlist cases unchanged...
     case "ADD_TO_WISHLIST":
       if (state.wishlist.length >= 20) {
         alert("Wishlist can only contain up to 20 items.");
