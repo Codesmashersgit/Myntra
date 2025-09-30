@@ -16,6 +16,7 @@ import Wishlist from './components/section/Wishlist'
 import Cart from "./components/section/Cart"
 import "./App.css";
 
+
 function App() {
   const [dark, setDark] = useState(false);
 
@@ -41,7 +42,7 @@ function App() {
           element={<Cart dark={dark} toggle={toggle} />}
           />
 
-        <Route
+         <Route
           path="/category/:categoryId"
           element={<CategoryDetails dark={dark} toggle={toggle} />}
         />
@@ -53,7 +54,7 @@ function App() {
         <Route
           path="/categoryitems/:categorycartId"
           element={<CategoryCartDetails dark={dark} toggle={toggle} />}
-        />
+        /> 
 
          
       </Routes>
@@ -69,6 +70,7 @@ function Mainpage({ dark, toggle }) {
         dark ? "bg-black text-white" : "bg-white text-black"
       } transition-all duration-1000 ease-in-out`}
     >
+      
       <Nav dark={dark} toggle={toggle} showprofile={true} showcontent={true} showsearch={true} showcart={true} showdisplay={false} showbag={false}/>
 
       <Home />
@@ -77,6 +79,7 @@ function Mainpage({ dark, toggle }) {
       <CategoriesCart />
       
       <Footer />
+     
     </div>
   );
 }

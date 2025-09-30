@@ -21,4 +21,4 @@ const Wishlist = ({ dark,toggle,showdisplay,showbag}) => {
   )
 }
 
-export default Wishlist
+export default Wishlist;

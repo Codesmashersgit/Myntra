@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useGlobalState } from "../context/GlobalState";
+import React, { useState, useEffect } from "react";
 import pic from "../assets/modqr90a.png";
 import { CiSearch, CiDark, CiLight } from "react-icons/ci";
 import { PiHandbagThin, PiHeartLight } from "react-icons/pi";
@@ -15,10 +14,15 @@ import Women from "../Submenu/Women";
 import Kids from "../Submenu/Kids";
 import HomeLiving from "../Submenu/HomeLiving";
 import Beauty from "../Submenu/Beauty";
-import { Topwear } from "../Data/Data";
+import { Topwear, indian_festive } from "../Data/Data";
+import { useSelector } from "react-redux";
 
-function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdisplay,showbag }) {
-  const { state } = useGlobalState();
+
+function Nav({ dark, toggle, showprofile, showcontent }) {
+   const cartItems = useSelector(state => state.cart.cart);
+   const wishItems = useSelector(state=> state.cart.wishlist);
+  const cartQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  const wishQuantity= wishItems.reduce((acc,item)=> acc+item.quantity,0);
   const [open, setOpen] = useState(false);
   const [openDropdowns, setOpenDropdowns] = useState({
     men: false,
@@ -29,12 +33,6 @@ function Nav({ dark, toggle, showprofile, showcontent,showsearch,showcart,showdi
     studio: false,
     topwear: false,
   });
-  const steps = ["Bag", "Address", "Payment"];
-const activeStep = 1; 
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const togglemenu = () => {
     setOpen(!open);
@@ -48,29 +46,6 @@ const activeStep = 1;
       ...prevstate,
       [section]: !prevstate[section],
     }));
-  };
-
-  const handleSearch = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
-
-    if (query.trim() !== "") {
-      fetch(`http://localhost:8000/api/search?query=${query}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setSearchResults(data);
-          setShowSuggestions(true);
-        })
-        .catch((err) => console.log(err));
-    } else {
-      setSearchResults([]);
-      setShowSuggestions(false);
-    }
-  };
-
-  const handleSuggestionClick = (product) => {
-    setSearchQuery(product.name);
-    setShowSuggestions(false);
   };
 
   return (
@@ -88,15 +63,11 @@ const activeStep = 1;
           dark ? "bg-black text-white" : "bg-white text-black "
         }`}
       >
-        <Link to="/">
-  <img
-    src={pic}
-    alt="Brand Logo"
-    className="md:h-[40px] h-[30px] w-auto"
-  />
-</Link>
-
-       {showcontent && (
+        <img
+          src={pic}
+          alt="Brand Logo"
+          className="md:h-[40px] h-[30px] w-auto md:px-7"
+        />
         <div className="lg:flex gap-11 hidden">
           <div className="flex gap-11">
             <li className="list-none group relative">
@@ -124,6 +95,7 @@ const activeStep = 1;
               <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-pink-400 transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Women
               </a>
+              {showcontent && (
                 <div
                   className={`absolute p-6 -left-28 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out  `}
                 >
@@ -135,13 +107,13 @@ const activeStep = 1;
                     <Women />
                   </div>
                 </div>
-
+              )}
             </li>
             <li className="list-none group relative">
               <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-[#e67e22] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Kids
               </a>
-          
+              {showcontent && (
                 <div
                   className={`absolute p-6 -left-52 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out  `}
                 >
@@ -153,31 +125,31 @@ const activeStep = 1;
                     <Kids />
                   </div>
                 </div>
-             
+              )}
             </li>
             <li className="list-none group relative">
               <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] border-[#f1c40f] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Home & Living
               </a>
-             
+              {showcontent && (
                 <div
                   className={`absolute p-6 -left-72 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
                 >
                   <div
-                    className={`h-full w-[1000px] hidden group-hover:block p-6  ${
+                    className={`h-full w-[1000px] hidden  group-hover:block p-6  ${
                       dark ? "bg-black text-white" : "bg-white text-black"
                     }`}
                   >
                     <HomeLiving />
                   </div>
                 </div>
-           
+              )}
             </li>
             <li className="list-none group relative">
               <a className="text-[15px] py-9 cursor-pointer hover:border-b-[3px] hover:border-[#9b59b6] transition-all duration-100 ease-in-out hover:pb-6 uppercase font-[sk]">
                 Beauty
               </a>
-             
+              {showcontent && (
                 <div
                   className={`absolute block p-6 -left-[430px] top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out `}
                 >
@@ -189,7 +161,7 @@ const activeStep = 1;
                     <Beauty />
                   </div>
                 </div>
-             
+              )}
             </li>
 
             <li className="list-none group relative">
@@ -200,7 +172,7 @@ const activeStep = 1;
                 Studio
                 <sup className="text-[12px] text-[#ff3f6c]">New</sup>
               </a>
-             
+              {showcontent && (
                 <div
                   className={`absolute p-6 -left-60 top-[28px] px-1 gap-28 transition-opacity opacity-0 group-hover:opacity-100 duration-700 ease-in-out`}
                 >
@@ -228,91 +200,23 @@ const activeStep = 1;
                     </div>
                   </div>
                 </div>
-             
-              
+              )}
             </li>
           </div>
         </div>
-        )}
-        {showbag && (
-         <div className="flex items-center gap-4 font-[sk] text-sm sm:text-base">
-  {steps.map((step, index) => (
-    <React.Fragment key={index}>
-      <p className={
-        index + 1 === activeStep 
-          ? "text-blue-600 font-semibold"
-          : index + 1 < activeStep
-            ? "text-green-600"
-            : "text-gray-400"
-      }>
-        {step}
-      </p>
-      {index !== steps.length - 1 && <span className="text-gray-400">------</span>}
-    </React.Fragment>
-  ))}
-</div>
 
-        )}
-      
-{showsearch &&
         <div className="md:flex hidden relative">
           <CiSearch className="absolute top-3 left-3 text-black cursor-pointer transition-transform transform hover:scale-125" />
           <input
             type="search"
-            value={searchQuery}
-            onChange={handleSearch}
-            placeholder="Search for Products, Brands and more..."
+            placeholder="Search for Products,Brands and more..."
             spellCheck="false"
-            className={`outline-none shadow-lg rounded-md w-[500px] sm:pl-14 md:pl-12 pr-3 py-2`}
-          />
-
-          {showSuggestions && searchResults.length > 0 && (
-            <div
-              className={`absolute top-12 left-0 w-full bg-white shadow-lg rounded-md z-50 ${
-                dark ? "bg-black text-white" : "bg-white text-black"
-              }`}
-            >
-              {searchResults.map((product) => (
-                <div
-                  key={product.id}
-                  className="p-2 hover:bg-gray-200 cursor-pointer"
-                  onClick={() => handleSuggestionClick(product)}
-                >
-                  {product.name}
-                </div>
-
-              ))}
-            </div>
-          )}
-        </div>
-}
-
-        {searchQuery && searchResults.length > 0 && (
-          <div
-            className={`absolute top-[80px] left-0 w-full bg-white shadow-lg rounded-md z-50 p-4 ${
-              dark ? "bg-black text-white" : "bg-white text-black"
+            className={`outline-none shadow-lg rounded-md w-[500px] sm:pl-14 md:pl-12 pr-3 py-2
+            
             }`}
-          >
-            <h3 className="text-lg font-semibold mb-4">Search Results</h3>
-            <div className="grid grid-cols-3 gap-4">
-              {searchResults.map((product) => (
-                <div
-                  key={product.id}
-                  className="border p-4 rounded-md hover:shadow-lg"
-                >
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-32 object-cover mb-2"
-                  />
-                  <h4 className="font-semibold">{product.name}</h4>
-                  <p className="text-sm text-gray-500">₹{product.price}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      
+          />
+        </div>
+
         <div className="flex md:gap-7 gap-4 items-center">
           <div className="flex flex-col group relative">
             {showprofile && (
@@ -378,45 +282,30 @@ const activeStep = 1;
               </div>
             </div>
           </div>
-{showcart && (
-         <Link to="/Wishlist"><div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
+
+          <div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
             <PiHeartLight className="md:text-[20.3px]" />
             <p className="absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
               Wishlist
             </p>
-            {state.wishlist.length > 0 && (
+            {wishQuantity.wishlist > 0 && (
               <span className="absolute -top-1 left-3 bg-red-500 text-white rounded-full text-[10px] w-4 h-3 flex items-center justify-center">
-                {state.wishlist.length}
+                {wishQuantity.wishlist}
               </span>
             )}
           </div>
-          </Link>
 
-)}
-{showcart && (
-         <Link to="/Cart"><div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
+          <div className="lg:flex flex-col items-center cursor-pointer hidden group relative">
             <PiHandbagThin className="text-[20.3px]" />
             <p className="absolute left-0 hidden font-[sk] -top-7 px-1 bg-black rounded-md text-white md:group-hover:block text-sm transition-all duration-300 ease-in-out opacity-0 group-hover:opacity-100">
               Cart
             </p>
-            {state.cart.length > 0 && (
+            {cartQuantity.cart > 0 && (
               <span className="absolute -top-1 left-3 bg-red-500 text-white rounded-full text-[10px] w-4 h-3 flex items-center justify-center">
-                {state.cart.length}
+                {cartQuantity.cart}
               </span>
             )}
           </div>
-          </Link>
-)}
-
-{showdisplay && (
-  <div className="flex items-center gap-5">
-    <img className="h-10 " src="https://constant.myntassets.com/checkout/assets/img/sprite-secure.png"/>
-    <p className="font-[sk]">100% SECURE</p>
-  </div>
-)
-}
-
-
 
           <div className="flex flex-col items-center cursor-pointer group relative">
             {dark ? (
@@ -449,10 +338,11 @@ const activeStep = 1;
                   Login/Signup
                 </button>
               </Link>
-              <div className="flex flex-col gap-5 p-4">
+              <button className=" text-red-400 font-[sk] lg:flex hidden ">Admin</button>
+              <div className="flex flex-col gap-5 pl-4 pt-4">
                 <li
                   onClick={() => toggleDropdown("men")}
-                  className="list-none opacity-75 font-[sk] flex cursor-pointer items-center justify-between"
+                  className="list-none opacity-75 font-[sk] flex cursor-pointer justify-between"
                 >
                   <a className="">Men</a>
                   {openDropdowns.men ? (
@@ -462,10 +352,10 @@ const activeStep = 1;
                   )}
                 </li>
                 {openDropdowns.men && (
-                  <div className="flex flex-col md:text-sm text-[14px] pl-9 gap-4 font-[sk]">
+                  <div className="flex flex-col md:text-sm text-[14px] gap-4 font-[sk]">
                     <div
                       onClick={() => toggleDropdown("topwear")}
-                      className="flex cursor-pointer items-center justify-between "
+                      className="flex cursor-pointer justify-between "
                     >
                       <a className="">Top Wear</a>
                       {openDropdowns.topwear ? (
@@ -475,14 +365,41 @@ const activeStep = 1;
                       )}
                     </div>
 
-                    {openDropdowns.topwear && (
-                      <div className="text-center">
-                        <Link to="/men">
-                          <a>Hello</a>
-                        </Link>
-                      </div>
-                    )}
-                    <a href="">Indian Festive Wear</a>
+                     {openDropdowns.topwear && (
+                    <div className="text-[14px] flex flex-col gap-3">
+                                {Topwear.map((item, index) => (
+                                  <ul
+                                    key={index}
+                                    className="cursor-pointer"
+                                  >
+                                    <a  target="_blank" href={item.url}>{item.title}</a>
+                                  </ul>
+                                ))}
+                              </div>
+                     )}
+                    <div
+                      onClick={() => toggleDropdown("festive")}
+                      className="flex cursor-pointer justify-between "
+                    >
+                      <a className="">Indian_festive Wear</a>
+                      {openDropdowns.indian_festive ? (
+                        <FaChevronDown className="text-xs" />
+                      ) : (
+                        <FaChevronUp className="text-xs" />
+                      )}
+                    </div>
+                      {openDropdowns.indian_festive && (
+                    <div className="text-[14px] flex flex-col gap-1 mt-4">
+                                {indian_festive.map((item, index) => (
+                                  <li
+                                    key={index}
+                                    className="cursor-pointer hover:opacity-100 opacity-70"
+                                  >
+                                    <a  target="_blank" href={item.url}>{item.title}</a>
+                                  </li>
+                                ))}
+                              </div>
+                     )}
                     <a href="">Bottom Wear</a>
                     <a href="">InnerWear & Sleepwear</a>
                     <a href="">Plus Size</a>
@@ -664,42 +581,33 @@ const activeStep = 1;
         />
       </div>
 
-     <div
-  className={`md:hidden  gap-7 text-center z-20 fixed bottom-0 flex w-full transition-all duration-1000 ease-in-out ${
-    dark ? "bg-black text-white" : "bg-white text-black"
-  }`}
->
-  <div className="w-full flex justify-around items-center text-center p-3">
-    
-    {/* Wishlist */}
-    <Link to="/wishlist">
-      <div className="cursor-pointer relative flex flex-col items-center">
-        <PiHeartLight />
-        <p className="text-[12px] font-[sk] text-center">Wishlist</p>
-
-        {state.wishlist.length > 0 && (
-          <span className="absolute -top-2 left-6 bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
-            {state.wishlist.length}
-          </span>
-        )}
+      <div
+        className={`md:hidden gap-7 text-center z-20 fixed bottom-0 flex w-full py-2 transition-all duration-1000 ease-in-out ${
+          dark ? "bg-black text-white" : "bg-white text-black"
+        }`}
+      >
+        <div className="flex flex-col items-center cursor-pointer w-[50%]">
+          <PiHeartLight />
+          <p className="text-[12px] font-[sk]">Wishlist</p>
+          {wishQuantity.wishlist> 0 && (
+            <span className="relative bottom-10 left-2 bg-red-500 text-white rounded-full text-[10px] w-3 h-3 flex items-center justify-center">
+              {wishQuantity.wishlist}
+            </span>
+          )}
+        </div>
+       <Link to="/cart"><div className="flex flex-col items-center cursor-pointer w-[50%]">
+          <PiHandbagThin />
+          <p className="text-[12px] font-[sk]">Cart</p>
+          {cartQuantity.cart > 0 && (
+            <span className="relative bottom-10 left-2  bg-red-500 text-white rounded-full text-[10px] w-3 h-3 flex items-center justify-center">
+              {cartQuantity.cart}
+            </span>
+            
+          )}
+          
+        </div>
+        </Link>
       </div>
-    </Link>
-
-    {/* Cart */}
-    <div className="cursor-pointer flex flex-col items-center relative">
-      <PiHandbagThin />
-      <p className="text-[12px] font-[sk] text-center">Cart</p>
-
-      {state.cart.length > 0 && (
-        <span className="absolute -top-2 left-3 bg-red-500 text-white rounded-full text-[10px] w-4 h-4 flex items-center justify-center">
-          {state.cart.length}
-        </span>
-      )}
-    </div>
-    
-  </div>
-</div>
-
     </>
   );
 }

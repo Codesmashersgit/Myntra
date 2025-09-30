@@ -14,7 +14,7 @@ function Home() {
   const [imageurls4,setimageurls4]= useState([]);
   const [imageurls5,setimageurls5]=  useState([]);
   const [imageurls6,setimageurls6]= useState([]);
-  const [imageurls7,setimageurls7]= useState([]);
+  // const [imageurls7,setimageurls7]= useState([]);
 
   const getslider = (slideshow,slidescroll) => ({
     dots: true,

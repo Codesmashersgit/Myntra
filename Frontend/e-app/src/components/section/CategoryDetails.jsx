@@ -3,17 +3,17 @@ import { useParams } from "react-router-dom";
 import Nav from "../Nav";
 import { FaRegHeart } from "react-icons/fa";
 import { PiHandbagThin } from "react-icons/pi";
-import { useGlobalState } from "../../context/GlobalState";
 import Footer from "../Footer";
+import { addToCart } from "../../redux/CreateSlice";
+import { addToWishlist } from "../../redux/CreateSlice";
+import { useDispatch } from 'react-redux';
 
-// Toastify imports
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 function CategoryDetails({ dark, toggle, showsearch, showprofile, showcontent, showcart }) {
-  const { state, dispatch } = useGlobalState();
   const { categoryId } = useParams();
   const [categoryItems, setCategoryItems] = useState([]);
+   const dispatch = useDispatch();
+
 
   useEffect(() => {
     fetch(`http://localhost:8000/api/category/${categoryId}`)
@@ -22,39 +22,15 @@ function CategoryDetails({ dark, toggle, showsearch, showprofile, showcontent, s
       .catch((err) => console.log("Error fetching category details:", err));
   }, [categoryId]);
 
+  
+
   const addToCart = (item) => {
-    const alreadyInCart = state.cart.some((cartItem) => cartItem.id === item.id);
-    if (alreadyInCart) {
-      toast.info("Item is already in the cart.");
-      return;
-    }
+    dispatch(addToCart(item.id));
+  }
 
-    if (state.cart.length >= 20) {
-      toast.error("Cart can only contain up to 20 items.");
-      return;
-    }
-
-    dispatch({ type: "ADD_TO_CART", payload: item });
-    toast.success("Item added to cart!");
-  };
-
-  const addToWishlist = (item) => {
-    const alreadyInWishlist = state.wishlist.some((wishItem) => wishItem.id === item.id);
-    if (alreadyInWishlist) {
-      toast.info("Item is already in the wishlist.");
-      
-      return;
-    }
-
-    if (state.wishlist.length >= 20) {
-      toast.error("Wishlist can only contain up to 20 items.");
-      return;
-    }
-
-    dispatch({ type: "ADD_TO_WISHLIST", payload: item });
-    toast.success("Item added to wishlist!");
-  };
-
+   const addToWishlist = (item) => {
+    dispatch(addToWishlist(item.id));
+  }
   return (
     <>
       <Nav
@@ -72,8 +48,6 @@ function CategoryDetails({ dark, toggle, showsearch, showprofile, showcontent, s
         } transition-all duration-1000 ease-in-out`}
       >
         {categoryItems.map((item, index) => {
-           const isInCart = state.cart.some(cartItem => cartItem.id === item.id);
-  const isInWishlist = state.wishlist.some(wishItem => wishItem.id === item.id);
           return (
     <div key={index} className="flex flex-col group">
       <div className="relative group">
@@ -104,15 +78,13 @@ function CategoryDetails({ dark, toggle, showsearch, showprofile, showcontent, s
         <div className="flex gap-2">
           <button
             onClick={() => addToWishlist(item)}
-            className={`font-[sk] ${isInWishlist ? "text-red-600" : "text-gray-500"}`}
-            title={isInWishlist ? "Already in Wishlist" : "Add to Wishlist"}
+            className={`font-[sk]`}
           >
             <FaRegHeart />
           </button>
           <button
             onClick={() => addToCart(item)}
-            className={`p-2 rounded-full ${isInCart ? "bg-[#ff3f6c] text-white" : "bg-gray-200"}`}
-            title={isInCart ? "Already in Cart" : "Add to Cart"}
+            className={`p-2 rounded-full`}
           >
             <PiHandbagThin />
           </button>
@@ -134,20 +106,6 @@ function CategoryDetails({ dark, toggle, showsearch, showprofile, showcontent, s
           <Footer />
         </div>
       </div>
-
-      {/* Toast container */}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={dark ? "dark" : "light"}
-      />
     </>
   );
 }

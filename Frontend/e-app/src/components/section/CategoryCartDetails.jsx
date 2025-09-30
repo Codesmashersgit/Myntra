@@ -132,16 +132,17 @@ import Nav from "../Nav";
 import Footer from "../Footer";
 import { FaRegHeart } from "react-icons/fa";
 import { PiHandbagThin } from "react-icons/pi";
-import { useGlobalState } from "../../context/GlobalState";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/CreateSlice";
+import { addToWishlist } from "../../redux/CreateSlice";
+
 
 function CategoryCartDetails({ dark, toggle }) {
-  const { state, dispatch } = useGlobalState();
+const dispatch = useDispatch();
   const { categorycartId } = useParams();
 
   const [categoryItems, setCategoryItems] = useState([]);
-  const [showCartNotification, setShowCartNotification] = useState(false);
-  const [showWishlistNotification, setShowWishlistNotification] = useState(false);
-
+ 
   useEffect(() => {
     fetch(`http://localhost:8000/api/categoryitems/${categorycartId}`)
       .then((res) => res.json())
@@ -150,16 +151,12 @@ function CategoryCartDetails({ dark, toggle }) {
   }, [categorycartId]);
 
   const addToCart = (item) => {
-    dispatch({ type: "ADD_TO_CART", payload: item });
-    setShowCartNotification(true);
-    setTimeout(() => setShowCartNotification(false), 3000);
-  };
+    dispatch(addToCart(item.id));
+  }
 
-  const addToWishlist = (item) => {
-    dispatch({ type: "ADD_TO_WISHLIST", payload: item });
-    setShowWishlistNotification(true);
-    setTimeout(() => setShowWishlistNotification(false), 3000);
-  };
+   const addToWishlist = (item) => {
+    dispatch(addToWishlist(item.id));
+  }
 
   return (
     <>
